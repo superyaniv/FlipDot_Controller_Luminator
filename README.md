@@ -34,7 +34,10 @@ Alternatively you can design the board yourself with a breadboard.
 Wire your board:
 
 ```
-Wire the board according to the schematic and connect the board to the flip-dot display and the microcontroller (use pins 18, 23, and 24 for the shift register data, clock, clear).
+Wire the board according to the schematic.
+
+Connect the board to the flip-dot display and the microcontroller.
+(use pins 18, 23, and 24 for the shift register data, clock, clear)
 ```
 
 
