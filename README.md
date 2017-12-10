@@ -21,9 +21,11 @@ Note: A different layout could use MOSFET transistors instead of these ICs.
 
 ### View of the PCB
 
-![Image of Top View]<img align="left" src="https://github.com/superyaniv/FlipDot_Controller_Luminator/blob/master/PCB_Controller_Design/FlipDot_Controller_Pic_top.png?raw=true" width="250">
-![Image of Bottom View]<img align="left"  src="https://github.com/superyaniv/FlipDot_Controller_Luminator/blob/master/PCB_Controller_Design/FlipDot_Controller_Pic_bottom.png?raw=true" width="250">
-![Image of Design View]<img align="center"  src="https://github.com/superyaniv/FlipDot_Controller_Luminator/blob/master/PCB_Controller_Design/FlipDot_Controller_Pic_design.png?raw=true" width="250">
+Top, Bottom, and overall Design View of the PCB:
+
+<img align="left" src="https://github.com/superyaniv/FlipDot_Controller_Luminator/blob/master/PCB_Controller_Design/FlipDot_Controller_Pic_top.png?raw=true" width="250">
+<img align="left"  src="https://github.com/superyaniv/FlipDot_Controller_Luminator/blob/master/PCB_Controller_Design/FlipDot_Controller_Pic_bottom.png?raw=true" width="250">
+<img align="center"  src="https://github.com/superyaniv/FlipDot_Controller_Luminator/blob/master/PCB_Controller_Design/FlipDot_Controller_Pic_design.png?raw=true" width="250">
 
 ### Installing
 
