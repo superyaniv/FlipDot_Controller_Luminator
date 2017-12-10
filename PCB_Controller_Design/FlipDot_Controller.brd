@@ -66,6 +66,8 @@
 <layer number="57" name="tCAD" color="7" fill="1" visible="no" active="no"/>
 <layer number="59" name="tCarbon" color="7" fill="1" visible="no" active="no"/>
 <layer number="60" name="bCarbon" color="7" fill="1" visible="no" active="no"/>
+<layer number="88" name="SimResults" color="9" fill="1" visible="no" active="no"/>
+<layer number="89" name="SimProbes" color="9" fill="1" visible="no" active="no"/>
 <layer number="90" name="Modules" color="5" fill="1" visible="no" active="no"/>
 <layer number="91" name="Nets" color="2" fill="1" visible="no" active="no"/>
 <layer number="92" name="Busses" color="1" fill="1" visible="no" active="no"/>
@@ -145,6 +147,8 @@
 <layer number="229" name="229bmp" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="230" name="230bmp" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="231" name="231bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="232" name="Eagle3D_PG2" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="233" name="Eagle3D_PG3" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="248" name="Housing" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="249" name="Edge" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="250" name="Descript" color="3" fill="1" visible="no" active="no"/>
@@ -159,7 +163,7 @@
 <wire x1="118.09" y1="-40.64" x2="118.09" y2="110.16" width="0" layer="20"/>
 <wire x1="118.09" y1="110.16" x2="-13.97" y2="110.16" width="0" layer="20"/>
 <wire x1="-13.97" y1="110.16" x2="-13.97" y2="-40.64" width="0" layer="20"/>
-<text x="51.435" y="109.22" size="2.54" layer="21" font="vector" align="top-center">FlipDot Controller
+<text x="55.245" y="107.95" size="1.9304" layer="21" font="vector" align="top-center">FlipDot Controller
 Version 0.1
 Yaniv Alfasy</text>
 <text x="22.86" y="106.68" size="1.27" layer="21" font="vector" align="center">Darlington
@@ -283,9 +287,6 @@ Registers (2)</text>
 <text x="102.87" y="29.21" size="0.8128" layer="21" font="vector" rot="R90" align="center-left">Clockline</text>
 <text x="101.6" y="24.13" size="0.8128" layer="21" font="vector" rot="R90" align="center-left">Clearline</text>
 <text x="99.06" y="21.59" size="0.8128" layer="21" font="vector" rot="R270" align="bottom-center">Dataline</text>
-<wire x1="33.02" y1="99.06" x2="41.275" y2="99.06" width="0.254" layer="21"/>
-<wire x1="61.595" y1="99.06" x2="69.85" y2="99.06" width="0.254" layer="21"/>
-<text x="64.77" y="102.87" size="1.27" layer="21" font="vector" align="center">Prototype</text>
 <wire x1="0" y1="107.95" x2="0" y2="95.25" width="0.254" layer="21"/>
 <wire x1="-12.7" y1="95.25" x2="-12.7" y2="107.95" width="0.254" layer="21"/>
 <text x="-6.35" y="106.68" size="1.27" layer="21" font="vector" align="center">Inputs
@@ -317,10 +318,6 @@ Registers (2)</text>
 <wire x1="59.69" y1="72.39" x2="59.69" y2="-1.27" width="0.254" layer="21"/>
 <wire x1="59.69" y1="-1.27" x2="41.91" y2="-1.27" width="0.254" layer="21"/>
 <wire x1="41.91" y1="-1.27" x2="41.91" y2="24.13" width="0.254" layer="21"/>
-<wire x1="33.02" y1="99.06" x2="33.02" y2="107.95" width="0.254" layer="21"/>
-<wire x1="33.02" y1="107.95" x2="36.195" y2="107.95" width="0.254" layer="21"/>
-<wire x1="66.04" y1="107.95" x2="69.85" y2="107.95" width="0.254" layer="21"/>
-<wire x1="69.85" y1="107.95" x2="69.85" y2="99.06" width="0.254" layer="21"/>
 <wire x1="16.51" y1="-33.02" x2="29.21" y2="-33.02" width="0.254" layer="21"/>
 <wire x1="1.27" y1="-33.02" x2="13.97" y2="-33.02" width="0.254" layer="21"/>
 <wire x1="13.97" y1="107.95" x2="10.16" y2="107.95" width="0.254" layer="21"/>
@@ -338,6 +335,25 @@ Registers (2)</text>
 <text x="43.18" y="27.94" size="1.27" layer="21" font="vector" align="center-left">C18</text>
 <text x="43.18" y="7.62" size="1.27" layer="21" font="vector" align="center-left">C27</text>
 <text x="43.18" y="22.86" size="1.27" layer="21" font="vector" align="center-left">C20</text>
+<rectangle x1="31.496" y1="100.076" x2="31.75" y2="107.696" layer="21"/>
+<rectangle x1="31.496" y1="107.95" x2="39.624" y2="108.204" layer="21"/>
+<rectangle x1="31.496" y1="107.696" x2="31.75" y2="108.204" layer="21"/>
+<rectangle x1="39.37" y1="100.076" x2="39.624" y2="107.95" layer="21"/>
+<rectangle x1="31.496" y1="100.076" x2="39.624" y2="100.33" layer="21"/>
+<rectangle x1="32.004" y1="100.584" x2="34.29" y2="102.616" layer="21"/>
+<rectangle x1="36.83" y1="100.584" x2="39.116" y2="102.616" layer="21"/>
+<rectangle x1="34.29" y1="105.41" x2="36.83" y2="107.696" layer="21"/>
+<rectangle x1="34.29" y1="102.616" x2="36.83" y2="102.87" layer="21"/>
+<rectangle x1="32.004" y1="102.616" x2="34.29" y2="105.156" layer="21"/>
+<rectangle x1="36.83" y1="102.616" x2="39.116" y2="105.156" layer="21"/>
+<wire x1="30.48" y1="109.22" x2="69.85" y2="109.22" width="0.254" layer="21"/>
+<wire x1="30.48" y1="99.06" x2="69.85" y2="99.06" width="0.254" layer="21"/>
+<wire x1="30.48" y1="109.22" x2="30.48" y2="106.68" width="0.254" layer="21"/>
+<wire x1="30.48" y1="99.06" x2="30.48" y2="101.6" width="0.254" layer="21"/>
+<wire x1="69.85" y1="99.06" x2="69.85" y2="101.6" width="0.254" layer="21"/>
+<wire x1="69.85" y1="109.22" x2="69.85" y2="106.68" width="0.254" layer="21"/>
+<wire x1="63.5" y1="104.14" x2="66.04" y2="104.14" width="0.254" layer="21"/>
+<wire x1="44.45" y1="104.14" x2="46.99" y2="104.14" width="0.254" layer="21"/>
 </plain>
 <libraries>
 <library name="FlipDot_Controller">
