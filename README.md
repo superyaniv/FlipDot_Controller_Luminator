@@ -23,9 +23,9 @@ Note: A different layout could use MOSFET transistors instead of these ICs.
 
 Using the gerber files, you can have the board made at a host of pcb manufacturers. Alternatively you can design the board yourself with a breadboard.
 
-<img align="left" src="https://github.com/superyaniv/FlipDot_Controller_Luminator/blob/master/PCB_Controller_Design/FlipDot_Controller_Pic_top.png?raw=true" width="200">
-<img align="center"  src="https://github.com/superyaniv/FlipDot_Controller_Luminator/blob/master/PCB_Controller_Design/FlipDot_Controller_Pic_bottom.png?raw=true" width="200">
-<img align="right"  src="https://github.com/superyaniv/FlipDot_Controller_Luminator/blob/master/PCB_Controller_Design/FlipDot_Controller_Pic_design.png?raw=true" width="200">
+<img align="left" src="https://github.com/superyaniv/FlipDot_Controller_Luminator/blob/master/PCB_Controller_Design/FlipDot_Controller_Pic_top.png?raw=true" width="250">
+<img align="center"  src="https://github.com/superyaniv/FlipDot_Controller_Luminator/blob/master/PCB_Controller_Design/FlipDot_Controller_Pic_bottom.png?raw=true" width="250">
+<img align="center"  src="https://github.com/superyaniv/FlipDot_Controller_Luminator/blob/master/PCB_Controller_Design/FlipDot_Controller_Pic_design.png?raw=true" width="250">
 
 Set up the layout of the board:
 
