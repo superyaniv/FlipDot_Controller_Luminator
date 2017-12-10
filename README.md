@@ -19,13 +19,15 @@ Note: A different layout could use MOSFET transistors instead of these ICs.
 1 x microcontroller (RPI or ESP8266 for use with this python code or Arduino )
 ```
 
-### Installing
-
-Using the gerber files, you can have the board made at a host of pcb manufacturers. Alternatively you can design the board yourself with a breadboard.
+### View of the PCB
 
 <img align="left" src="https://github.com/superyaniv/FlipDot_Controller_Luminator/blob/master/PCB_Controller_Design/FlipDot_Controller_Pic_top.png?raw=true" width="250">
 <img align="left"  src="https://github.com/superyaniv/FlipDot_Controller_Luminator/blob/master/PCB_Controller_Design/FlipDot_Controller_Pic_bottom.png?raw=true" width="250">
 <img align="center"  src="https://github.com/superyaniv/FlipDot_Controller_Luminator/blob/master/PCB_Controller_Design/FlipDot_Controller_Pic_design.png?raw=true" width="250">
+
+### Installing
+
+Using the gerber files, you can have the board made at a host of pcb manufacturers. Alternatively you can design the board yourself with a breadboard.
 
 Set up the layout of the board:
 
