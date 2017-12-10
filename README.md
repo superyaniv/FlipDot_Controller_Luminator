@@ -1,4 +1,4 @@
-# FlipDot Controller Project - Yaniv Alfasy
+# FlipDot Controller Project
 
 A FlipDot board was a unique way, before the cheap and ubiquitous LED displays, to display signage with low power and high visability. The unique innovation combines electrical engineering princples of electromagnetism, polarity, multiplexing, and much more. Not to mention it's just fun to see the complex mechanical switching in realtime. As I became interested in learning more about electrical engineering and design, this project, created in 2011 and posted on my public git recently, inspired me to begin learning circuit design. 
 
