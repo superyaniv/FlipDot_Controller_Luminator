@@ -27,6 +27,8 @@ Using the gerber files, you can have the board made at a host of pcb manufacture
 <img align="left"  src="https://github.com/superyaniv/FlipDot_Controller_Luminator/blob/master/PCB_Controller_Design/FlipDot_Controller_Pic_bottom.png?raw=true" width="250">
 <img align="left"  src="https://github.com/superyaniv/FlipDot_Controller_Luminator/blob/master/PCB_Controller_Design/FlipDot_Controller_Pic_design.png?raw=true" width="250"></br>
 
+
+
 Set up the layout of the board:
 
 ```
