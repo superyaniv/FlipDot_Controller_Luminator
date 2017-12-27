@@ -49,12 +49,14 @@ def displayScroller():
 				message = displayText+displayText
 				columns_offset_total = columns_offset*columns_at_a_time
 				t = threading.Thread(target=worker, kwargs={'panelNumber':panelNumber,'panelDisplay':message,'columns_offset_total':columns_offset_total})
-				#t.start()
+				logging.debug('starting %s', t.getName())
+				t.start()
 				#FlipDot_Panels[panel].updateDisplay(t+t,columns_offset*columns_at_a_time)
-			logging.debug('starting %s', t.getName())
-			t.start()
-			logging.debug('joining %s', t.getName())
-			t.join()
+			for t in threading.enumerate():
+				if t is main_thread:
+					continue
+				logging.debug('joining %s', t.getName())
+				t.join()
 			if columns_offset>=(len(displayText)*columns_each_character)/columns_at_a_time:
 				columns_offset=1
 			else:
@@ -67,9 +69,11 @@ def displayScroller():
 		pass
 
 def worker(panelNumber,panelDisplay,columns_offset_total):
+	logging.debug('Starting Panel #:'+panelNumber)
 	if panelNumber ==0:
 		FlipDot_Panels[panelNumber].updateDisplay(panelDisplay,columns_offset_total)
 	return
+	logging.debug('Exiting Panel #:'+panelNumber)
 
 
 displayScroller()
