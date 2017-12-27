@@ -17,13 +17,13 @@ registers=[0]*numOfRegisterPins
 
 def displayScroller():
 	FlipDot_Controller.clearDots()
-	t = "YANIV IS THE BEST!"
+	t = "YANIV IS THE BEST! "
 	p = 0
 	try:
 		print "Press Ctrl+C to Stop Test."
 		while True:
 			FlipDot_Controller.updateDisplay(t[p:]+t)
-			if p>len(t)-4:
+			if p>len(t):
 				p=0
 			else:
 				p=p+1
