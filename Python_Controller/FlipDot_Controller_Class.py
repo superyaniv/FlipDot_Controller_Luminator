@@ -7,8 +7,8 @@ class FlipDot_Controller_Class:
 	displaySegments = 5
 	columns_per_Segment = 6
 	displayRows = 7
-	oldDisplayState = [[[0 for s in range(displayRows)] for c in range(columns_per_Segment)] for r in range(displaySegments)]
-	currentDisplayState = [[[0 for s in range(displayRows)] for c in range(columns_per_Segment)] for r in range(displaySegments)]
+	oldDisplayState = [[0 for s in range(displayRows)] for c in range(columns_per_Segment*displaySegments)]
+	currentDisplayState = [[0 for s in range(displayRows)] for c in range(columns_per_Segment*displaySegments)]
 	flipDelay = .001
 
 
@@ -88,14 +88,14 @@ class FlipDot_Controller_Class:
 	def updateDisplay(self, textMessage, column_offset=1, row_offset=0):
 		alphabetIndex = []
 		currentColumn = 0
-		self.currentDisplayState = [[[0 for s in range(self.displayRows)] for c in range(self.columns_per_Segment)] for r in range(len(textMessage))]
+		self.currentDisplayState = [[0 for s in range(self.displayRows)] for c in range(self.columns_per_Segment*len(textMessage))]
 
 		for ch in range(len(textMessage)):
 			alphabetIndex.append(ord(textMessage[ch])-32)
 			if alphabetIndex <0: 
 				alphabetIndex=0
 
-		for segment in range(len(textMessage)):
+		for ch in range(len(textMessage)):
 			for segment_column in range(self.columns_per_Segment-1):
 				columnbins= self.alphabet[alphabetIndex[segment]]
 				x = bin(columnbins[segment_column])
@@ -106,27 +106,26 @@ class FlipDot_Controller_Class:
 				row=0
 				for isOn in z:
 					#self.flipDot(segment*6+segment_column, row, isOn, self.flipDelay)
-					self.currentDisplayState[segment][segment_column][row] = isOn
+					self.currentDisplayState[ch*self.columns_per_Segment+segment_column][row] = isOn
 					row=row+1
 
 		self.clearRegisters()
-		for segment in range(self.displaySegments):
-			for segment_column in range(self.columns_per_Segment-1):
-				for row in range(self.displayRows):
-					if self.currentDisplayState[segment][segment_column+column_offset][row] and not self.oldDisplayState[segment][segment_column][row]:
-						self.registers[self.onColumns[segment*self.columns_per_Segment+segment_column+column_offset]]=1
-						self.registers[self.onRows[row]]=1
-				self.writeRegisters()
-				sleep(self.flipDelay)
-				self.clearRegisters()
-				for row in range(self.displayRows):
-					if not self.currentDisplayState[segment][segment_column+column_offset][row] and self.oldDisplayState[segment][segment_column][row]:
-						self.registers[self.offColumns[segment*self.columns_per_Segment+segment_column+column_offset]]=1
-						self.registers[self.offRows[row]]=1
-					self.oldDisplayState[segment][segment_column][row] = self.currentDisplayState[segment][segment_column][row]
-				self.writeRegisters()
-				sleep(self.flipDelay)
-				self.clearRegisters()
+		for column in range(self.columns_per_Segment*displaySegments):
+			for row in range(self.displayRows):
+				if self.currentDisplayState[column][row] and not self.oldDisplayState[column][row]:
+					self.registers[self.onColumns[column]]=1
+					self.registers[self.onRows[row]]=1
+			self.writeRegisters()
+			sleep(self.flipDelay)
+			self.clearRegisters()
+			for row in range(self.displayRows):
+				if not self.currentDisplayState[column][row] and self.oldDisplayState[column][row]:
+					self.registers[self.offColumns[column]]=1
+					self.registers[self.offRows[row]]=1
+				self.oldDisplayState[column][row] = self.currentDisplayState[scolumn][row]
+			self.writeRegisters()
+			sleep(self.flipDelay)
+			self.clearRegisters()
 
 	def deInitialize(self):
 		self.clearRegisters()
