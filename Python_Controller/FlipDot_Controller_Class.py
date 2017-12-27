@@ -121,7 +121,7 @@ class FlipDot_Controller_Class:
 				if not self.currentDisplayState[column][row] and self.oldDisplayState[column][row]:
 					self.registers[self.offColumns[column]]=1
 					self.registers[self.offRows[row]]=1
-				self.oldDisplayState[column][row] = self.currentDisplayState[scolumn][row]
+				self.oldDisplayState[column][row] = self.currentDisplayState[column][row]
 			self.writeRegisters()
 			sleep(self.flipDelay)
 			self.clearRegisters()
