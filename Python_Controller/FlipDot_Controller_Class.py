@@ -8,7 +8,7 @@ class FlipDot_Controller_Class:
 	columns_per_Segment = 6
 	displayRows = 7
 	currentDisplayState = [[[0 for s in range(displayRows)] for c in range(columns_per_Segment)] for r in range(displaySegments)]
-	flipDelay = .01
+	flipDelay = .005
 
 
 
@@ -111,12 +111,14 @@ class FlipDot_Controller_Class:
 						self.registers[self.onRows[row]]=1
 				self.writeRegisters()
 				self.clearRegisters()
+				self.writeRegisters()
 				for row in range(self.displayRows):
 					if not self.currentDisplayState[segment][segment_column][row]:
 						self.registers[self.offColumns[segment*self.columns_per_Segment+segment_column]]=1
 						self.registers[self.offRows[row]]=1
 				self.writeRegisters()
 				self.clearRegisters()
+				self.writeRegisters()
 
 	def deInitialize(self):
 		self.clearRegisters()
