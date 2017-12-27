@@ -82,12 +82,12 @@ class FlipDot_Controller_Class:
 		alphabetIndex = []
 		currentColumn = 0
 
-		for ch in range(self.displaySegments):
+		for ch in range(len(textMessage)):
 			alphabetIndex.append(ord(textMessage[ch])-32)
 			if alphabetIndex <0: 
 				alphabetIndex=0
 
-		for segment in range(self.displaySegments):
+		for segment in range(max(self.displaySegments,len(textMessage))):
 			for segment_column in range(self.columns_per_Segment-1):
 				columnbins= self.alphabet[alphabetIndex[segment]]
 				if segment_column <= 5: 
