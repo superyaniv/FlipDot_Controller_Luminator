@@ -97,7 +97,7 @@ class FlipDot_Controller_Class:
 
 		for segment in range(len(textMessage)):
 			for segment_column in range(self.columns_per_Segment-1):
-				if segment*self.columns_perSegment+segment_column < offset:
+				if segment*self.columns_per_Segment+segment_column < offset:
 					break
 				columnbins= self.alphabet[alphabetIndex[segment]]
 				x = bin(columnbins[segment_column])
