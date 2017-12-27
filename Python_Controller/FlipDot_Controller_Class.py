@@ -103,10 +103,10 @@ class FlipDot_Controller_Class:
 					row=row+1
 
 		for segment in range(0,displaySegments):
-			for segment_column in range(0,columns_per_Segment):
+			for segment_column in range(0,self.columns_per_Segment):
 				for row in range(0,displayRows):
 					if(self.currentDisplayState[segment][segment_column][row]):
-						self.registers[onColumns(segment*columns_per_Segment+segment_column)]=1
+						self.registers[onColumns(segment*self.columns_per_Segment+segment_column)]=1
 						self.registers[onRows(row)]=1
 					else:
 						self.registers[offColumns(segment*columns_per_Segment+segment_column)]=1
