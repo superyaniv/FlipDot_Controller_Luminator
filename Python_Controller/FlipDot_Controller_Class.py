@@ -84,7 +84,7 @@ class FlipDot_Controller_Class:
 			sleep(self.flipDelay)
 			self.clearRegisters()
 
-	def updateDisplay(self, textMessage, column_offset=1, row_offset=0):
+	def updateDisplay(self, textMessage, column_offset=-1, row_offset=0):
 		alphabetIndex = []
 		currentColumn = 0
 		self.currentDisplayState = [[0 for s in range(self.displayRows)] for c in range(self.columns_per_Segment*len(textMessage))]
@@ -111,17 +111,17 @@ class FlipDot_Controller_Class:
 		self.clearRegisters()
 		for column in range(self.columns_per_Segment*self.displaySegments):
 			for row in range(self.displayRows):
-				if self.currentDisplayState[column][row] and not self.oldDisplayState[column][row]:
+				if self.currentDisplayState[column+column_offset][row] and not self.oldDisplayState[column][row]:
 					self.registers[self.onColumns[column]]=1
 					self.registers[self.onRows[row]]=1
 			self.writeRegisters()
 			sleep(self.flipDelay)
 			self.clearRegisters()
 			for row in range(self.displayRows):
-				if not self.currentDisplayState[column][row] and self.oldDisplayState[column][row]:
+				if not self.currentDisplayState[column+column_offset][row] and self.oldDisplayState[column][row]:
 					self.registers[self.offColumns[column]]=1
 					self.registers[self.offRows[row]]=1
-				self.oldDisplayState[column][row] = self.currentDisplayState[column][row]
+				self.oldDisplayState[column][row] = self.currentDisplayState[column+column_offset][row]
 			self.writeRegisters()
 			sleep(self.flipDelay)
 			self.clearRegisters()
