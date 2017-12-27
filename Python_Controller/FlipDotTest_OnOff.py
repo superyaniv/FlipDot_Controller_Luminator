@@ -13,24 +13,13 @@ srclk_Pin = 24
 FlipDot_Controller = FlipDot_Controller_Class.FlipDot_Controller_Class(1, onRows, offRows, onColumns, offColumns, numOfRegisterPins, ser_Pin, rclk_Pin, srclk_Pin) 
 
 registers=[0]*numOfRegisterPins
-#---------#
-
-def allDotsOff():
-	for r in range(0, 7):
-		for c in range(0, 30):
-			FlipDot_Controller.flipDot(c, r, 0, .01)
-
-def allDotsOn():
-	for r in range(0, 7):
-		for c in range(0, 30):
-			FlipDot_Controller.flipDot(c, r, 1, .01)
 
 def displayOnOffTest():
 	try:
 		print "Press Ctrl+C to Stop Test."
 		while True:
-			allDotsOff()
-			allDotsOn()
+			FlipDot_Controller.allDots(0)
+			FlipDot_Controller.allDots(1)
 	except KeyboardInterrupt:
 		FlipDot_Controller.deInitialize()
 		pass
