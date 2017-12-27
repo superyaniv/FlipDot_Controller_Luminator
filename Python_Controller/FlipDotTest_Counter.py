@@ -16,7 +16,7 @@ FlipDot_Controller = FlipDot_Controller_Class.FlipDot_Controller_Class(1, onRows
 registers=[0]*numOfRegisterPins
 #---------#
 
-def displayTime():
+def displayCounter):
 	FlipDot_Controller.clearDots()
 	#--display time--#
 	t = 0
@@ -30,5 +30,5 @@ def displayTime():
 		FlipDot_Controller.deInitialize
 		pass
 
-displayTime()
+displayCounter()
 FlipDot_Controller.deInitialize()
