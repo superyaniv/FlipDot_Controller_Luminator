@@ -97,8 +97,9 @@ class FlipDot_Controller_Class:
 		for ch in range(len(textMessage)):
 			for segment_column in range(self.columns_per_Segment-1):
 				if segment_column == self.columns_per_Segment-1:
-					self.currentDisplayState[ch*self.columns_per_Segment+segment_column][row] = 0
-					continue
+					for row in range(self.displayRows-1):
+						self.currentDisplayState[ch*self.columns_per_Segment+segment_column][row] = 0
+						break
 				columnbins= self.alphabet[alphabetIndex[ch]]
 				x = bin(columnbins[segment_column])
 				z = [bool(int(y)) for y in x[2:]]
