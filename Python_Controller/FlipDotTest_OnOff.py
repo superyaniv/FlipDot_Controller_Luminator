@@ -19,6 +19,7 @@ def displayOnOffTest():
 		print "Press Ctrl+C to Stop Test."
 		while True:
 			FlipDot_Controller.allDots(0)
+			sleep(1)
 			FlipDot_Controller.allDots(1)
 	except KeyboardInterrupt:
 		FlipDot_Controller.deInitialize()
