@@ -120,7 +120,7 @@ class FlipDot_Controller_Class:
 					#self.flipDot(segment*6+segment_column, row, isOn, self.flipDelay)
 					currentDisplayState[ch*self.columns_per_Segment+segment_column][row] = isOn
 					row=row+1
-				self.updateDisplayPixels(currentDisplayState, column_offset, row_offset)
+		self.updateDisplayPixels(currentDisplayState, column_offset, row_offset)
 
 	def updateDisplayPixels(self, currentDisplayState, column_offset=0, row_offset=0):
 		self.clearRegisters()
