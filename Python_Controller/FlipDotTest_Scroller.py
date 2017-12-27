@@ -17,7 +17,7 @@ registers=[0]*numOfRegisterPins
 
 def displayScroller():
 	FlipDot_Controller.clearDots()
-	t = "YANIV TEST2"
+	t = "YANIV IS THE BEST!"
 	p = 0
 	try:
 		print "Press Ctrl+C to Stop Test."
