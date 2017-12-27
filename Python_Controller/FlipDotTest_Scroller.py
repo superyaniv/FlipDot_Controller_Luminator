@@ -25,7 +25,7 @@ def displayScroller():
 		print "Press Ctrl+C to Stop Test."
 		while True:
 			FlipDot_Controller.updateDisplay(t+t,columns_offset*columns_at_a_time)
-			if columns_offset>0 and columns_offset>=(len(t)*columns_each_character)/column_offset:
+			if columns_offset>0 and columns_offset>=(len(t)*columns_each_character)/columns_offset:
 				columns_offset=1
 			else:
 				columns_offset=columns_offset+1
