@@ -98,9 +98,15 @@ class FlipDot_Controller_Class:
 					z=[0]+z			
 				row=0
 				for isOn in z:
-					self.flipDot(segment*6+segment_column, row, isOn, self.flipDelay)
+					#self.flipDot(segment*6+segment_column, row, isOn, self.flipDelay)
 					currentDisplayState[segment][segment_column][row] = isOn
 					row=row+1
+
+		for segment in range(0,displaySegments):
+			for segment_column in range(0,columns_per_Segment):
+				for row in range(0,displayRows):
+					if(currentDisplayState[segment][segment_column][row]):
+						self.flipDot(segment*6+segment_column, row, isOn, self.flipDelay)
 
 	def deInitialize(self):
 		self.clearRegisters()
