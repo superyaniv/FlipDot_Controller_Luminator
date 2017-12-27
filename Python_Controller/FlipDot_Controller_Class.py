@@ -88,6 +88,7 @@ class FlipDot_Controller_Class:
 	def updateDisplay(self, textMessage):
 		alphabetIndex = []
 		currentColumn = 0
+		textMessage = textMessage.ljust(self.displaySegments)
 
 		for ch in range(len(textMessage)):
 			alphabetIndex.append(ord(textMessage[ch])-32)
