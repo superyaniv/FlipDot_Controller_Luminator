@@ -45,7 +45,7 @@ def displayScroller():
 		print "Press Ctrl+C to Stop Test."
 		while True:
 			for panelNumber in range(len(FlipDot_Panels)):
-				t = threading.Thread(target=worker, kwrgs={'panelNumber':panelNumber,'panelDisplay':t+t,'columns_offset_total':columns_offset*columns_at_a_time})
+				t = threading.Thread(target=worker, kwargs={'panelNumber':panelNumber,'panelDisplay':t+t,'columns_offset_total':columns_offset*columns_at_a_time})
 				#FlipDot_Panels[panel].updateDisplay(t+t,columns_offset*columns_at_a_time)
 			for t in threading.enumerate():
 				if t is main_thread:
