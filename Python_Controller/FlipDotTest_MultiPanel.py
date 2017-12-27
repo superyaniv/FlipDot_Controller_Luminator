@@ -19,7 +19,7 @@ FlipDot_Panels = [0 for i in range(1)]
 ser_Pin = 18
 rclk_Pin = 23
 srclk_Pin = 24
-FlipDot_Panels[1] = FlipDot_Controller_Class.FlipDot_Controller_Class(1, onRows, offRows, onColumns, offColumns, numOfRegisterPins, ser_Pin, rclk_Pin, srclk_Pin) 
+FlipDot_Panels[0] = FlipDot_Controller_Class.FlipDot_Controller_Class(1, onRows, offRows, onColumns, offColumns, numOfRegisterPins, ser_Pin, rclk_Pin, srclk_Pin) 
 #----Panel #2----#
 #ser_Pin = 18
 #rclk_Pin = 23
