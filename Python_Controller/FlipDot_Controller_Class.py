@@ -87,19 +87,20 @@ class FlipDot_Controller_Class:
 			if alphabetIndex <0: 
 				alphabetIndex=0
 
-		for segment in range(0,5):
-			for col in range(0,5):
+		for segment in range(0,self.displaySegments):
+			for segment_column in range(0,self.columns_per_Segment):
 				columnbins= self.alphabet[alphabetIndex[segment]]
-				if col <= 5: 
-					x = bin(columnbins[col])
+				if segment_column <= 5: 
+					x = bin(columnbins[segment_column])
 				
 				z = [bool(int(y)) for y in x[2:]]
 				for f in range(0,7-len(z)):
 					z=[0]+z			
-				r=0
+				row=0
 				for isOn in z:
-					self.flipDot(segment*6+col, r, isOn, self.flipDelay)
-					r=r+1
+					self.flipDot(segment*6+segment_column, row, isOn, self.flipDelay)
+					currentDisplayState[segment][segment_column][row] = isOn
+					row=row+1
 
 	def deInitialize(self):
 		self.clearRegisters()
