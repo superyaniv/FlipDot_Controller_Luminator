@@ -52,6 +52,7 @@ def displayScroller():
 				logging.debug('starting %s', t.getName())
 				t.start()
 				#FlipDot_Panels[panel].updateDisplay(t+t,columns_offset*columns_at_a_time)
+			main_thread = threading.currentThread()
 			for t in threading.enumerate():
 				if t is main_thread:
 					continue
