@@ -24,7 +24,7 @@ def displayTime():
 		print "Press Ctrl+C to Stop Test."
 		while True:
 			t=t+1
-			FlipDot_Controller.updateDisplay(str(t)
+			FlipDot_Controller.updateDisplay(str(t))
 			sleep(1)
 	except KeyboardInterrupt:
 		FlipDot_Controller.deInitialize
