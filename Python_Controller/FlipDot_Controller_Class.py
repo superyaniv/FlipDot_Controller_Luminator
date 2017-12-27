@@ -75,9 +75,13 @@ class FlipDot_Controller_Class:
 		self.clearRegisters()
 
 	def clearDots(self):
-		for r in range(0,7):
-			for c in range(0, 30):
-				self.flipDot(c, r, 0, self.flipDelay)
+		for segment in range(self.displaySegments):
+			for segment_column in range(self.columns_per_Segment-1):
+				for row in range(self.displayRows):
+					if self.oldDisplayState[segment][segment_column][row]:
+						self.registers[self.offColumns[segment*self.columns_per_Segment+segment_column]]=1
+						self.registers[self.offRows[row]]=1
+					self.oldDisplayState[segment][segment_column][row] = 0
 
 	def updateDisplay(self, textMessage):
 		alphabetIndex = []
