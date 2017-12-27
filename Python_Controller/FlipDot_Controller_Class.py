@@ -78,7 +78,7 @@ class FlipDot_Controller_Class:
 		for segment in range(self.displaySegments):
 			for segment_column in range(self.columns_per_Segment-1):
 				for row in range(self.displayRows):
-					if self.oldDisplayState[segment][segment_column][row] or self.oldDisplayState[segment][segment_column][row] is None:
+					if self.oldDisplayState[segment][segment_column][row] or not self.oldDisplayState:
 						self.registers[self.offColumns[segment*self.columns_per_Segment+segment_column]]=1
 						self.registers[self.offRows[row]]=1
 					self.oldDisplayState[segment][segment_column][row]=0
