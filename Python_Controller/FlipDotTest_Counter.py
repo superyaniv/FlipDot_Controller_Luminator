@@ -1,5 +1,5 @@
 import FlipDot_Controller_Class
-import datetime
+from time import sleep
 
 #----Set up controller to understand PCB design and Microcontroller layout----#
 onRows = [0,1,2,3,4,5,6] #[53,61,56,60,57,59,58]
