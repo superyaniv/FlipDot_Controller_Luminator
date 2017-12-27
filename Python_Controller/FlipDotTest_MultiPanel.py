@@ -60,7 +60,8 @@ def displayScroller():
 			else:
 				columns_offset=columns_offset+1
 	except KeyboardInterrupt:
-		FlipDot_Controller.deInitialize
+		for FlipDot_Panel in FlipDot_Panels:
+			FlipDot_Panel.deInitialize
 		logging.debug('joining %s', t.getName())
 		t.join()
 		pass
