@@ -16,7 +16,7 @@ FlipDot_Controller = FlipDot_Controller_Class.FlipDot_Controller_Class(1, onRows
 registers=[0]*numOfRegisterPins
 
 def displayScroller():
-	FlipDot_Controller.clearDots()
+	FlipDot_Controller.allDots(0)
 	t = "KELEIGH SUCKS! "
 	columns_offset = 0
 	columns_at_a_time = 6

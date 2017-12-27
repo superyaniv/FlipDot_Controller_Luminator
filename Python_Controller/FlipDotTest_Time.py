@@ -16,7 +16,7 @@ FlipDot_Controller = FlipDot_Controller_Class.FlipDot_Controller_Class(1, onRows
 registers=[0]*numOfRegisterPins
 
 def displayTime():
-	FlipDot_Controller.clearDots()
+	FlipDot_Controller.allDots(0)
 	t = "time"
 	try:
 		print "Press Ctrl+C to Stop Test."
