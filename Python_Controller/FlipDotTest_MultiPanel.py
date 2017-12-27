@@ -64,6 +64,7 @@ def displayScroller():
 def worker(panelNumber,panelDisplay,columns_offset_total):
 	if panelNumber ==0:
 		FlipDot_Panels[panelNumber].updateDisplay(panelDisplay,columns_offset_total)
+	return
 
 
 displayScroller()
