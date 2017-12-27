@@ -49,7 +49,7 @@ def displayScroller():
 				message = displayText+displayText
 				columns_offset_total = columns_offset*columns_at_a_time
 				t = threading.Thread(target=worker, kwargs={'panelNumber':panelNumber,'panelDisplay':message,'columns_offset_total':columns_offset_total})
-				t.start()
+				#t.start()
 				#FlipDot_Panels[panel].updateDisplay(t+t,columns_offset*columns_at_a_time)
 			logging.debug('starting %s', t.getName())
 			t.start()
