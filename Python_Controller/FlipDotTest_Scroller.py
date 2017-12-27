@@ -18,15 +18,17 @@ registers=[0]*numOfRegisterPins
 def displayScroller():
 	FlipDot_Controller.clearDots()
 	t = "KELEIGH SUCKS! "
-	p = 0
+	column_offset = 0
+	columns_at_a_time = 2
+	columns_each_character = 6
 	try:
 		print "Press Ctrl+C to Stop Test."
 		while True:
-			FlipDot_Controller.updateDisplay(t+t,p)
-			if p>=len(t)*6:
-				p=1
+			FlipDot_Controller.updateDisplay(t+t,column_offset*columns_at_a_time)
+			if column_offset>=len(t)*columns_each_character/column_offset:
+				column_offset=1
 			else:
-				p=p+1
+				column_offset=column_offset+1
 	except KeyboardInterrupt:
 		FlipDot_Controller.deInitialize
 		pass
