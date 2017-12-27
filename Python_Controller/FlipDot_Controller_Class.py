@@ -80,6 +80,8 @@ class FlipDot_Controller_Class:
 				alphabetIndex=0
 
 		for character in range(len(textMessage)):
+			for row in self.displayRows:
+				currentDisplayState[character*(self.displayColumns/character_size)+character_size+1][row] = 0
 			for character_column in range(character_size):
 				columnbins= self.alphabet[alphabetIndex[character]]
 				x = bin(columnbins[character_column])
