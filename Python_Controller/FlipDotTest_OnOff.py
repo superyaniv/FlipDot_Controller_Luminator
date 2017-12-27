@@ -1,4 +1,5 @@
 import FlipDot_Controller_Class
+from time import sleep
 
 #----Set up controller to understand PCB design and Microcontroller layout----#
 onRows = [0,1,2,3,4,5,6] #[53,61,56,60,57,59,58]
@@ -21,6 +22,7 @@ def displayOnOffTest():
 			FlipDot_Controller.allDots(0)
 			sleep(1)
 			FlipDot_Controller.allDots(1)
+			sleep(1)
 	except KeyboardInterrupt:
 		FlipDot_Controller.deInitialize()
 		pass
