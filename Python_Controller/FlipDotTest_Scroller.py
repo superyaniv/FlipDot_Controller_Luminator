@@ -15,15 +15,14 @@ FlipDot_Controller = FlipDot_Controller_Class.FlipDot_Controller_Class(1, onRows
 
 registers=[0]*numOfRegisterPins
 
-def displayTime():
+def displayScroller():
 	FlipDot_Controller.clearDots()
 	t = "YANIV " #Test with 5 characters
 	p = 0
 	try:
 		print "Press Ctrl+C to Stop Test."
 		while True:
-			FlipDot_Controller.updateDisplay(t[p:]+t[-p:])
-			sleep(.025)
+			FlipDot_Controller.updateDisplay(t[p:]+t)
 			if p>5:
 				p=0
 			else:
@@ -32,5 +31,5 @@ def displayTime():
 		FlipDot_Controller.deInitialize
 		pass
 
-displayTime()
+displayScroller()
 FlipDot_Controller.deInitialize()
