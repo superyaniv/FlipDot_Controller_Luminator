@@ -82,6 +82,7 @@ class FlipDot_Controller_Class:
 					self.registers[self.offRows[row]]=1
 					self.oldDisplayState[segment][segment_column][row]=0
 				self.writeRegisters()
+				sleep(self.flipDelay)
 				self.clearRegisters()
 
 	def updateDisplay(self, textMessage):
@@ -115,6 +116,7 @@ class FlipDot_Controller_Class:
 						self.registers[self.onColumns[segment*self.columns_per_Segment+segment_column]]=1
 						self.registers[self.onRows[row]]=1
 				self.writeRegisters()
+				sleep(self.flipDelay)
 				self.clearRegisters()
 				for row in range(self.displayRows):
 					if not self.currentDisplayState[segment][segment_column][row] and self.oldDisplayState[segment][segment_column][row]:
@@ -122,6 +124,7 @@ class FlipDot_Controller_Class:
 						self.registers[self.offRows[row]]=1
 					self.oldDisplayState[segment][segment_column][row] = self.currentDisplayState[segment][segment_column][row]
 				self.writeRegisters()
+				sleep(self.flipDelay)
 				self.clearRegisters()
 
 	def deInitialize(self):
