@@ -23,7 +23,7 @@ def displayScroller():
 		print "Press Ctrl+C to Stop Test."
 		while True:
 			FlipDot_Controller.updateDisplay(t[p:]+t)
-			if p>len(t):
+			if p>=len(t):
 				p=1
 			else:
 				p=p+1
