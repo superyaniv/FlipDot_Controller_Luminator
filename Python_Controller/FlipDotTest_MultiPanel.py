@@ -35,8 +35,8 @@ FlipDot_Panels[0] = FlipDot_Controller_Class.FlipDot_Controller_Class(1, onRows,
 registers=[0]*numOfRegisterPins
 
 def displayScroller():
-	for panel in FlipDot_Panels:
-		FlipDot_Panels[panel].allDots(0)
+	for FlipDot_Panel in FlipDot_Panels:
+		FlipDot_Panel.allDots(0)
 	t = "KELEIGH SUCKS! "
 	columns_offset = 0
 	columns_at_a_time = 6
@@ -44,8 +44,8 @@ def displayScroller():
 	try:
 		print "Press Ctrl+C to Stop Test."
 		while True:
-			for panel in FlipDot_Panels:
-				t = threading.Thread(target=worker, kwrgs={'panelDisplay':t+t,'columns_offset_total':columns_offset*columns_at_a_time})
+			for panelNumber in range(len(FlipDot_Panels)):
+				t = threading.Thread(target=worker, kwrgs={'panelNumber':panelNumber,'panelDisplay':t+t,'columns_offset_total':columns_offset*columns_at_a_time})
 				#FlipDot_Panels[panel].updateDisplay(t+t,columns_offset*columns_at_a_time)
 			for t in threading.enumerate():
 				if t is main_thread:
@@ -62,8 +62,8 @@ def displayScroller():
 		t.join()
 		pass
 
-def worker(panelDisplay,columns_offset_total):
-	FlipDot_Panels[panel].updateDisplay(panelDisplay,columns_offset_total)
+def worker(panelNumber,panelDisplay,columns_offset_total):
+	FlipDot_Panels[panelNumber].updateDisplay(panelDisplay,columns_offset_total)
 
 
 displayScroller()
