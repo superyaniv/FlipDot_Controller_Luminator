@@ -26,7 +26,7 @@ def displayScroller():
 		while True:
 			FlipDot_Controller.updateDisplay(t+t,columns_offset*columns_at_a_time)
 			if columns_offset>=(len(t)*columns_each_character)/columns_at_a_time:
-				columns_offset=0
+				columns_offset=1
 			else:
 				columns_offset=columns_offset+1
 	except KeyboardInterrupt:
