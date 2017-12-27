@@ -25,7 +25,7 @@ def displayTime():
 		while True:
 			t=t+1
 			FlipDot_Controller.updateDisplay(t)
-			sleep(1000)
+			sleep(1)
 	except KeyboardInterrupt:
 		FlipDot_Controller.deInitialize
 		pass
