@@ -14,18 +14,15 @@ srclk_Pin = 24
 FlipDot_Controller = FlipDot_Controller_Class.FlipDot_Controller_Class(1, onRows, offRows, onColumns, offColumns, numOfRegisterPins, ser_Pin, rclk_Pin, srclk_Pin) 
 
 registers=[0]*numOfRegisterPins
-#---------#
 
 def displayCounter):
 	FlipDot_Controller.clearDots()
-	#--display time--#
 	t = 0
 	try:
 		print "Press Ctrl+C to Stop Test."
 		while True:
 			t=t+1
 			FlipDot_Controller.updateDisplay(str(t)[:5])
-			sleep(.025)
 	except KeyboardInterrupt:
 		FlipDot_Controller.deInitialize
 		pass

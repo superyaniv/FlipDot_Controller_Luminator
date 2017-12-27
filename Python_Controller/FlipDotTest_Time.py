@@ -14,11 +14,9 @@ srclk_Pin = 24
 FlipDot_Controller = FlipDot_Controller_Class.FlipDot_Controller_Class(1, onRows, offRows, onColumns, offColumns, numOfRegisterPins, ser_Pin, rclk_Pin, srclk_Pin) 
 
 registers=[0]*numOfRegisterPins
-#---------#
 
 def displayTime():
 	FlipDot_Controller.clearDots()
-	#--display time--#
 	t = "time"
 	try:
 		print "Press Ctrl+C to Stop Test."

@@ -15,7 +15,6 @@ srclk_Pin = 24
 FlipDot_Controller = FlipDot_Controller_Class.FlipDot_Controller_Class(1, onRows, offRows, onColumns, offColumns, numOfRegisterPins, ser_Pin, rclk_Pin, srclk_Pin) 
 
 registers=[0]*numOfRegisterPins
-#---------#
 
 def getBitcoinPrice():
     URL = 'https://www.bitstamp.net/api/ticker/'
