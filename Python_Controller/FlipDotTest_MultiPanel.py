@@ -74,7 +74,10 @@ def worker(panelNumber,panelDisplay,columns_offset_total):
 		logging.debug('Starting Panel #:'+str(panelNumber))
 		FlipDot_Panels[panelNumber].updateDisplay(panelDisplay,columns_offset_total)
 		logging.debug('Exiting Panel #:'+str(panelNumber))
+	else:
+		logging.debug('Not Starting Panel #:'+str(panelNumber))
 	return
+
 
 
 
