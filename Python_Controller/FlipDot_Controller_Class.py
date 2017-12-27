@@ -76,7 +76,7 @@ class FlipDot_Controller_Class:
 
 	def clearDots(self):
 		for segment in range(self.displaySegments):
-			for segment_column in range(self.columns_per_Segment-1):
+			for segment_column in range(self.columns_per_Segment):
 				for row in range(self.displayRows):
 					self.registers[self.offColumns[segment*self.columns_per_Segment+segment_column]]=1
 					self.registers[self.offRows[row]]=1
