@@ -85,7 +85,7 @@ class FlipDot_Controller_Class:
 				sleep(self.flipDelay)
 				self.clearRegisters()
 
-	def updateDisplay(self, textMessage, column_offset=0, row_offset=0):
+	def updateDisplay(self, textMessage, column_offset=1, row_offset=0):
 		alphabetIndex = []
 		currentColumn = 0
 		self.currentDisplayState = [[[0 for s in range(self.displayRows)] for c in range(self.columns_per_Segment)] for r in range(len(textMessage))]
