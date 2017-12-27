@@ -7,7 +7,7 @@ class FlipDot_Controller_Class:
 	displaySegments = 5
 	columns_per_Segment = 6
 	displayRows = 7
-	currentDisplayState = [[[for i in range(displaySegments)] for i in range(columns_per_Segment)] for i in range(displayRows)]
+	currentDisplayState = [[[for s in range(displaySegments)] for c in range(columns_per_Segment)] for r in range(displayRows)]
 	flipDelay = .005
 
 
