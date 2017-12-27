@@ -96,14 +96,17 @@ class FlipDot_Controller_Class:
 
 		for ch in range(len(textMessage)):
 			for segment_column in range(self.columns_per_Segment-1):
+				if segment_column == self.columns_per_Segment-1:
+					self.currentDisplayState[ch*self.columns_per_Segment+segment_column][row] = 0
+					continue
 				columnbins= self.alphabet[alphabetIndex[ch]]
 				x = bin(columnbins[segment_column])
-				
 				z = [bool(int(y)) for y in x[2:]]
 				for f in range(7-len(z)):
 					z=[0]+z			
 				row=0
 				for isOn in z:
+
 					#self.flipDot(segment*6+segment_column, row, isOn, self.flipDelay)
 					self.currentDisplayState[ch*self.columns_per_Segment+segment_column][row] = isOn
 					row=row+1
