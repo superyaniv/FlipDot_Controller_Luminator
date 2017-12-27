@@ -1,5 +1,4 @@
 import RPi.GPIO as IO
-#import wiringpi2 as wiringpi
 from time import sleep
 
 class FlipDot_Controller_Class:
@@ -23,10 +22,6 @@ class FlipDot_Controller_Class:
 		self.registers= [0] * numOfRegisterPins
 
 	def initializePI(self):
-		#wiringpi.wiringPiSetupGpio()  
-		#wiringpi.pinMode(self.ser_Pin, 1)
-		#wiringpi.pinMode(self.rclk_Pin, 1)
-		#wiringpi.pinMode(self.srclk_Pin, 1)
 		IO.setmode(IO.BCM)
 		IO.setup(self.ser_Pin,IO.OUT)
 		IO.setup(self.rclk_Pin,IO.OUT)
@@ -37,17 +32,12 @@ class FlipDot_Controller_Class:
 		#Alphabet = [[0,0,0,0,0],[0,56,125,56,0],[80,96,0,80,96],[20,127,20,127,20],[18,42,127,42,36],[98,100,8,19,35],[54,73,85,34,5],[0,80,96,0,0], [0,28,34,65,0],[0,65,34,28,0],[20,8,62,8,20],[8,8,62,8,8],[0,5,6,0,0],[8,8,8,8,8],[0,3,3,0,0],[2,4,8,16,32],[62,69,73,81,62],[17,33,127,1,1],[33,67,69,73,49],[34,65,73,73,54],[12,20,36,127,4],[114,81,81,81,78],[62,73,73,73,38],[64,71,72,80,96],[54,73,73,73,54],[50,73,73,73,62],[0,54,54,0,0],[0,53,54,0,0],[8,20,34,65,0],[20,20,20,20,20],[0,65,34,20,8],[32,64,69,72,48],[62,73,87,85,62],[31, 36, 68, 36, 31],[127, 73, 73, 73, 54],[62, 65, 65, 65, 34],[127, 65, 65, 34, 28],[127, 73, 73, 65, 65],[127, 72, 72, 72, 64],[62, 65, 65, 69, 38],[127, 8, 8, 8, 127],[0, 65, 127, 65, 0],[2, 1, 1, 1, 126],[127, 8, 20, 34, 65],[127, 1, 1, 1, 1],[127, 32, 16, 32, 127],[127, 32, 16, 8, 127],[62, 65, 65, 65, 62],[127, 72, 72, 72, 48],[62, 65, 69, 66, 61],[127, 72, 76, 74, 49],[50, 73, 73, 73, 38],[64, 64, 127, 64, 64],[126, 1, 1, 1, 126],[124, 2, 1, 2, 124],[126, 1, 6, 1, 126],[99, 20, 8, 20, 99],[96, 16, 15, 16, 96],[67, 69, 73, 81, 97],[0,127,65,65,0],[32,16,8,4,2],[0,65,65,127,0],[16,32,64,32,16],[1,1,1,1,1],[0,64,32,16,0],[2,21,21,14,1],[64,126,9,17,14],[14,17,17,17,10],[14,17,74,127,1],[14,21,21,21,9],[1,9,63,72,32],[9,21,21,21,30],[127,8,8,8,7],[0,0,46,1,1],[2,1,1,1,94],[1,127,4,10,17],[0,65,127,1,0],[31,16,14,16,31],[31,8,16,16,15],[14,17,17,17,14],[127,20,20,20,8],[8,20,20,31,1],[31,8,16,16,8],[9,21,21,21,18],[16,16,126,17,18],[30,1,1,30,1],[28,2,1,2,28],[30,1,6,1,30],[17,10,4,10,17],[16,9,6,8,16],[17,19,21,25,17],[8,54,65,65,0],[0,0,127,0,0],[0,65,65,54,8],[32,64,32,16,32]]
 
 	def writeRegisters(self):
-		#wiringpi.digitalWrite(self.rclk_Pin, 0)
 		IO.output(self.rclk_Pin,0)
 		for i in range(self.numOfRegisterPins-1,-1,-1):
-			#wiringpi.digitalWrite(self.srclk_Pin, 0)
 			IO.output(self.srclk_Pin,0)
 			val = self.registers[i]
-			#wiringpi.digitalWrite(self.ser_Pin, val)
 			IO.output(self.ser_Pin,val)
-			#wiringpi.digitalWrite(self.srclk_Pin, 1)
 			IO.output(self.srclk_Pin,1)
-		#wiringpi.digitalWrite(self.rclk_Pin, 1)
 		IO.output(self.rclk_Pin,1)
 
 	def clearRegisters(self):
@@ -109,9 +99,6 @@ class FlipDot_Controller_Class:
 
 	def deInitialize(self):
 		self.clearRegisters()
-		#wiringpi.digitalWrite(self.ser_Pin, 0)
 		IO.output(self.ser_Pin,0)
-		#wiringpi.digitalWrite(self.rclk_Pin, 0)
 		IO.output(self.rclk_Pin,0)
-		#wiringpi.digitalWrite(self.srclk_Pin, 0)
 		IO.output(self.srclk_Pin,0)
