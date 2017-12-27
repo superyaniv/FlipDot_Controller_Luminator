@@ -70,11 +70,12 @@ def displayScroller():
 		pass
 
 def worker(panelNumber,panelDisplay,columns_offset_total):
-	logging.debug('Starting Panel #:'+str(panelNumber))
 	if panelNumber ==0:
+		logging.debug('Starting Panel #:'+str(panelNumber))
 		FlipDot_Panels[panelNumber].updateDisplay(panelDisplay,columns_offset_total)
+		logging.debug('Exiting Panel #:'+str(panelNumber))
 	return
-	logging.debug('Exiting Panel #:'+str(panelNumber))
+
 
 
 displayScroller()
