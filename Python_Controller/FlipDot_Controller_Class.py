@@ -99,20 +99,20 @@ class FlipDot_Controller_Class:
 				row=0
 				for isOn in z:
 					#self.flipDot(segment*6+segment_column, row, isOn, self.flipDelay)
-					currentDisplayState[segment][segment_column][row] = isOn
+					self.currentDisplayState[segment][segment_column][row] = isOn
 					row=row+1
 
 		for segment in range(0,displaySegments):
 			for segment_column in range(0,columns_per_Segment):
 				for row in range(0,displayRows):
-					if(currentDisplayState[segment][segment_column][row]):
-						registers[onColumns(segment*columns_per_Segment+segment_column)]=1
-						registers[onRows(row)]=1
+					if(self.currentDisplayState[segment][segment_column][row]):
+						self.registers[onColumns(segment*columns_per_Segment+segment_column)]=1
+						self.registers[onRows(row)]=1
 					else:
-						registers[offColumns(segment*columns_per_Segment+segment_column)]=1
-						registers[offRows(row)]=1
-				writeRegisters
-				clearRegisters
+						self.registers[offColumns(segment*columns_per_Segment+segment_column)]=1
+						self.registers[offRows(row)]=1
+				self.writeRegisters()
+				self.clearRegisters()
 
 	def deInitialize(self):
 		self.clearRegisters()
