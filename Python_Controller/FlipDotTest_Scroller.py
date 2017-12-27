@@ -24,7 +24,7 @@ def displayScroller():
 		while True:
 			FlipDot_Controller.updateDisplay(t[p:]+t)
 			if p>len(t):
-				p=0
+				p=1
 			else:
 				p=p+1
 	except KeyboardInterrupt:
