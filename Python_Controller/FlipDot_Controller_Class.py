@@ -72,7 +72,7 @@ class FlipDot_Controller_Class:
 		currentColumn = 0
 		character_size = 5
 		currentDisplayState = [[0 for s in range(self.displayRows)] for c in range(self.displayColumns/character_size*len(textMessage)+1)]
-		
+
 		for character in range(len(textMessage)):
 			alphabetIndex.append(ord(textMessage[character])-32)
 			if alphabetIndex <0: 
@@ -93,7 +93,7 @@ class FlipDot_Controller_Class:
 		self.updateDisplayPixels(currentDisplayState, column_offset, row_offset)
 
 	def updateDisplayPixels(self, currentDisplayState, column_offset=0, row_offset=0):
-		for column in range(self.displayColumns):
+		for column in range(max(self.displayColumns),len(currentDisplayState)):
 			for row in range(self.displayRows):
 				if currentDisplayState[column+column_offset][row] and not self.oldDisplayState[column][row]:
 					self.registers[self.onColumns[column]]=1
