@@ -73,6 +73,10 @@ class FlipDot_Controller_Class:
 		character_size = 5
 		currentDisplayState = [[0 for s in range(self.displayRows)] for c in range(self.displayColumns/character_size*len(textMessage)+1)]
 
+		if len(textMessage)<5:
+			for s in range(5-len(textMessage)):
+				textMessage = textMessage+" "
+				
 		for character in range(len(textMessage)):
 			alphabetIndex.append(ord(textMessage[character])-32)
 			if alphabetIndex <0: 
