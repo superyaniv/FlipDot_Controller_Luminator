@@ -93,7 +93,7 @@ class FlipDot_Controller_Class:
 		self.updateDisplayPixels(currentDisplayState, column_offset, row_offset)
 
 	def updateDisplayPixels(self, currentDisplayState, column_offset=0, row_offset=0):
-		for column in range([max(self.displayColumns),len(currentDisplayState)]):
+		for column in range(max(self.displayColumns,len(currentDisplayState))):
 			for row in range(self.displayRows):
 				if currentDisplayState[column+column_offset][row] and not self.oldDisplayState[column][row]:
 					self.registers[self.onColumns[column]]=1
