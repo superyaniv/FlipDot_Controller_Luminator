@@ -8,7 +8,7 @@ class FlipDot_Controller_Class:
 	displayColumns = 30
 	displayRows = 7
 	oldDisplayState = [[0 for s in range(displayRows)] for c in range(displayColumns)]
-	flipDelay = .001
+	flipDelay = .01
 
 	def __init__(self, name, onRows, offRows, onColumns, offColumns, numOfRegisterPins, ser_Pin, rclk_Pin, srclk_Pin):
 		self.name = name    # Name of the controller or panel
@@ -54,18 +54,18 @@ class FlipDot_Controller_Class:
 					self.registers[self.onColumns[column]]=1
 					self.registers[self.onRows[row]]=1
 					self.oldDisplayState[column][row]=0
-					self.writeRegisters()
-					sleep(self.flipDelay)
-					self.clearRegisters()
+				self.writeRegisters()
+				sleep(self.flipDelay)
+				self.clearRegisters()
 		else:
 			for column in range(self.displayColumns):
 				for row in range(self.displayRows):
 					self.registers[self.offColumns[column]]=1
 					self.registers[self.offRows[row]]=1
 					self.oldDisplayState[column][row]=0
-					self.writeRegisters()
-					sleep(self.flipDelay)
-					self.clearRegisters()			
+				self.writeRegisters()
+				sleep(self.flipDelay)
+				self.clearRegisters()			
 	
 	def simpleTest(self, rowDot, columnDot):
 
