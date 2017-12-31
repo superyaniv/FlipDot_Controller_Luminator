@@ -8,7 +8,7 @@ class FlipDot_Controller_Class:
 	displayColumns = 30
 	displayRows = 7
 	oldDisplayState = [[0 for s in range(displayRows)] for c in range(displayColumns)]
-	flipDelay = .01
+	flipDelay = .001
 
 	def __init__(self, name, onRows, offRows, onColumns, offColumns, numOfRegisterPins, ser_Pin, rclk_Pin, srclk_Pin):
 		self.name = name    # Name of the controller or panel
@@ -115,22 +115,22 @@ class FlipDot_Controller_Class:
 					needsUpdate = 1
 					self.registers[self.onColumns[column]]=1
 					self.registers[self.onRows[row]]=1
-					if needsUpdate:
-						self.writeRegisters()
-						sleep(self.flipDelay)
-						self.clearRegisters()
-						needsUpdate = 0
+			if needsUpdate:
+				self.writeRegisters()
+				sleep(self.flipDelay)
+				self.clearRegisters()
+				needsUpdate = 0
 			for row in range(self.displayRows):
 				if not currentDisplayState[column+column_offset][row] and self.oldDisplayState[column][row]:
 					needsUpdate = 1
 					self.registers[self.offColumns[column]]=1
 					self.registers[self.offRows[row]]=1
-					if needsUpdate:
-						self.writeRegisters()
-						sleep(self.flipDelay)
-						self.clearRegisters()
-						needsUpdate = 0
 				self.oldDisplayState[column][row] = currentDisplayState[column+column_offset][row]
+			if needsUpdate:
+				self.writeRegisters()
+				sleep(self.flipDelay)
+				self.clearRegisters()
+				needsUpdate = 0
 
 
 	def deInitialize(self):
