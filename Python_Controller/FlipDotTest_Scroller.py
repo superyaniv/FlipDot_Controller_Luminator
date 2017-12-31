@@ -13,13 +13,11 @@ srclk_Pin = 24
 
 FlipDot_Controller = FlipDot_Controller_Class.FlipDot_Controller_Class(1, onRows, offRows, onColumns, offColumns, numOfRegisterPins, ser_Pin, rclk_Pin, srclk_Pin) 
 
-registers=[0]*numOfRegisterPins
-
 def displayScroller():
 	FlipDot_Controller.allDots(0)
 	t = "KELEIGH SUCKS! "
 	columns_offset = 0
-	columns_at_a_time = 1
+	columns_at_a_time = 2
 	columns_each_character = 6
 	try:
 		print "Press Ctrl+C to Stop Test."
