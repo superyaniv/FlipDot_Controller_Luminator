@@ -8,7 +8,7 @@ class FlipDot_Controller_Class:
 	displayColumns = 30
 	displayRows = 7
 	oldDisplayState = [[0 for s in range(displayRows)] for c in range(displayColumns)]
-	flipDelay = .005 #timing 
+	flipDelay = .01 #timing 
 
 	def __init__(self, name, onRows, offRows, onColumns, offColumns, numOfRegisterPins, ser_Pin, rclk_Pin, srclk_Pin):
 		self.name = name    # Name of the controller or panel
