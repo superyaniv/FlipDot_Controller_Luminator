@@ -54,18 +54,32 @@ class FlipDot_Controller_Class:
 					self.registers[self.onColumns[column]]=1
 					self.registers[self.onRows[row]]=1
 					self.oldDisplayState[column][row]=0
-				self.writeRegisters()
-				sleep(self.flipDelay)
-				self.clearRegisters()
+					self.writeRegisters()
+					sleep(self.flipDelay)
+					self.clearRegisters()
 		else:
 			for column in range(self.displayColumns):
 				for row in range(self.displayRows):
 					self.registers[self.offColumns[column]]=1
 					self.registers[self.offRows[row]]=1
 					self.oldDisplayState[column][row]=0
-				self.writeRegisters()
-				sleep(self.flipDelay)
-				self.clearRegisters()			
+					self.writeRegisters()
+					sleep(self.flipDelay)
+					self.clearRegisters()			
+	
+	def simpleTest(self, rowDot, columnDot):
+
+		self.registers[self.onColumns[columnDot]]=1
+		self.registers[self.onRows[rowDot]]=1
+		self.writeRegisters()
+		sleep(1)
+		self.clearRegisters()
+
+		self.registers[self.offColumns[columnDot]]=1
+		self.registers[self.offRows[rowDot]]=1
+		self.writeRegisters()
+		sleep(1)
+		self.clearRegisters()		
 
 	def updateDisplay(self, textMessage, column_offset=0, row_offset=0):
 		alphabetIndex = []
