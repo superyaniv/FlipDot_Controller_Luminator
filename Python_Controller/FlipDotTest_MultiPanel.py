@@ -31,9 +31,6 @@ FlipDot_Panels[1] = FlipDot_Controller_Class.FlipDot_Controller_Class(1, onRows,
 #srclk_Pin = 11
 #FlipDot_Panels[2] = FlipDot_Controller_Class.FlipDot_Controller_Class(1, onRows, offRows, onColumns, offColumns, numOfRegisterPins, ser_Pin, rclk_Pin, srclk_Pin) 
 
-
-registers=[0]*numOfRegisterPins
-
 def multiPanel():
 	for FlipDot_Panel in FlipDot_Panels:
 		FlipDot_Panel.allDots(1)
@@ -50,8 +47,8 @@ def multiPanel():
 				columns_offset_total = columns_offset*columns_at_a_time
 				for FlipDot_Panel in FlipDot_Panels:
 					FlipDot_Panel.updateDisplay(message,columns_offset_total)
-					FlipDot_Panel.allDots(1)
-					FlipDot_Panel.allDots(0)
+					#FlipDot_Panel.allDots(1)
+					#FlipDot_Panel.allDots(0)
 				#t = threading.Thread(target=worker, kwargs={'panelNumber':panelNumber,'panelDisplay':message,'columns_offset_total':columns_offset_total})
 				#logging.debug('starting %s', t.getName())
 				#t.start()
