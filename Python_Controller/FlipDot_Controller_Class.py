@@ -21,7 +21,7 @@ class FlipDot_Controller_Class:
 		self.initializePI()
 		self.registers= [0] * numOfRegisterPins
 		self.oldDisplayState = [[0 for s in range(self.displayRows)] for c in range(self.displayColumns)]
-		self.flipDelay = .01 #timing
+		self.flipDelay = .05 #timing
 
 	def initializePI(self):
 		IO.setmode(IO.BCM)
