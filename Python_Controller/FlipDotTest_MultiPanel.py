@@ -37,7 +37,7 @@ def multiPanel():
 		FlipDot_Panel.allDots(0)
 	displayText = "KELEIGH SUCKS! "
 	columns_offset = 0
-	columns_at_a_time = 6
+	columns_at_a_time = 1
 	columns_each_character = 6
 	try:
 		print "Press Ctrl+C to Stop Test."
@@ -45,17 +45,17 @@ def multiPanel():
 			for panelNumber in range(len(FlipDot_Panels)):
 				message = displayText+displayText
 				columns_offset_total = columns_offset*columns_at_a_time
-				#for FlipDot_Panel in FlipDot_Panels:
-				#	FlipDot_Panel.updateDisplay(message,columns_offset_total)
-				t = threading.Thread(target=worker, kwargs={'panelNumber':panelNumber,'panelDisplay':message,'columns_offset_total':columns_offset_total})
-				logging.debug('starting %s', t.getName())
-				t.start()
-			main_thread = threading.currentThread()
-			for t in threading.enumerate():
-				if t is main_thread:
-					continue
-				t.join()
-				logging.debug('joined %s', t.getName())
+				for FlipDot_Panel in FlipDot_Panels:
+					FlipDot_Panel.updateDisplay(message,columns_offset_total)
+				#t = threading.Thread(target=worker, kwargs={'panelNumber':panelNumber,'panelDisplay':message,'columns_offset_total':columns_offset_total})
+				#logging.debug('starting %s', t.getName())
+				#t.start()
+			#main_thread = threading.currentThread()
+			#for t in threading.enumerate():
+				#if t is main_thread:
+				#	continue
+				#t.join()
+				#logging.debug('joined %s', t.getName())
 			if columns_offset>=(len(displayText)*columns_each_character)/columns_at_a_time:
 				columns_offset=1
 			else:
@@ -72,9 +72,6 @@ def worker(panelNumber,panelDisplay,columns_offset_total):
 	FlipDot_Panels[panelNumber].updateDisplay(panelDisplay,columns_offset_total)
 	logging.debug('Exiting Panel #:'+str(panelNumber))
 	return
-
-
-
 
 multiPanel()
 FlipDot_Controller.deInitialize()
