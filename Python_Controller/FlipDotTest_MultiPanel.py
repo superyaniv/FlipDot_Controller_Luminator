@@ -42,8 +42,8 @@ def multiPanel():
 	try:
 		print "Press Ctrl+C to Stop Test."
 		while True:
+			message = displayText+displayText
 			for panelNumber in range(len(FlipDot_Panels)):
-				message = displayText+displayText
 				columns_offset_total = columns_offset*columns_at_a_time
 				n=0
 				for FlipDot_Panel in FlipDot_Panels:
