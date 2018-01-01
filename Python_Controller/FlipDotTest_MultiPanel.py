@@ -49,7 +49,7 @@ def multiPanel():
 				message = displayText+displayText
 				columns_offset_total = columns_offset*columns_at_a_time
 				for FlipDot_Panel in FlipDot_Panels:
-					FlipDot_Panels[panelNumber].updateDisplay(message,columns_offset_total)
+					FlipDot_Panel.updateDisplay(message,columns_offset_total)
 				#t = threading.Thread(target=worker, kwargs={'panelNumber':panelNumber,'panelDisplay':message,'columns_offset_total':columns_offset_total})
 				#logging.debug('starting %s', t.getName())
 				#t.start()
