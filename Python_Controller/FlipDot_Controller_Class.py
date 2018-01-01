@@ -21,7 +21,7 @@ class FlipDot_Controller_Class:
 		self.srclk_Pin = srclk_Pin
 		self.initializePI()
 		self.registers= [0] * numOfRegisterPins
-		self.oldDisplayState = [[0 for s in range(displayRows)] for c in range(displayColumns)]
+		self.oldDisplayState = [[0 for s in range(self.displayRows)] for c in range(self.displayColumns)]
 
 	def initializePI(self):
 		IO.setmode(IO.BCM)
