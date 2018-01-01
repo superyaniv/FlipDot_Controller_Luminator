@@ -62,7 +62,7 @@ class FlipDot_Controller_Class:
 				for row in range(self.displayRows):
 					self.registers[self.offColumns[column]]=1
 					self.registers[self.offRows[row]]=1
-					self.oldDisplayState[column][row]=0
+					self.oldDisplayState[column][row]=1
 				self.writeRegisters()
 				sleep(self.flipDelay)
 				self.clearRegisters()			
