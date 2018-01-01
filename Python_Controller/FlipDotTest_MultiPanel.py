@@ -48,15 +48,17 @@ def multiPanel():
 			for panelNumber in range(len(FlipDot_Panels)):
 				message = displayText+displayText
 				columns_offset_total = columns_offset*columns_at_a_time
-				t = threading.Thread(target=worker, kwargs={'panelNumber':panelNumber,'panelDisplay':message,'columns_offset_total':columns_offset_total})
-				logging.debug('starting %s', t.getName())
-				t.start()
-			main_thread = threading.currentThread()
-			for t in threading.enumerate():
-				if t is main_thread:
-					continue
-				t.join()
-				logging.debug('joined %s', t.getName())
+				for FlipDot_Panel in FlipDot_Panels:
+					FlipDot_Panels[panelNumber].updateDisplay(message,columns_offset_total)
+				#t = threading.Thread(target=worker, kwargs={'panelNumber':panelNumber,'panelDisplay':message,'columns_offset_total':columns_offset_total})
+				#logging.debug('starting %s', t.getName())
+				#t.start()
+			#main_thread = threading.currentThread()
+			#for t in threading.enumerate():
+			#	if t is main_thread:
+			#		continue
+			#	t.join()
+			#	logging.debug('joined %s', t.getName())
 			if columns_offset>=(len(displayText)*columns_each_character)/columns_at_a_time:
 				columns_offset=1
 			else:
