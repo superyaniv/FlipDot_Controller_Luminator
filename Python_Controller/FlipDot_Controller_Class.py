@@ -111,7 +111,7 @@ class FlipDot_Controller_Class:
 
 		for column in range(min(self.displayColumns,len(currentDisplayState))):
 			for row in range(self.displayRows):
-				if currentDisplayState[column+column_offset][row] and not self.oldDisplayState[column][row]:
+				if currentDisplayState[column+column_offset][row]: #and not self.oldDisplayState[column][row]:
 					needsUpdate = 1
 					self.registers[self.onColumns[column]]=1
 					self.registers[self.onRows[row]]=1
@@ -121,7 +121,7 @@ class FlipDot_Controller_Class:
 				self.clearRegisters()
 				needsUpdate = 0
 			for row in range(self.displayRows):
-				if not currentDisplayState[column+column_offset][row] and self.oldDisplayState[column][row]:
+				if not currentDisplayState[column+column_offset][row]: #and self.oldDisplayState[column][row]:
 					needsUpdate = 1
 					self.registers[self.offColumns[column]]=1
 					self.registers[self.offRows[row]]=1
