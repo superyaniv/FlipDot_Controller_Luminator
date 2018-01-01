@@ -37,7 +37,7 @@ def multiPanel():
 		FlipDot_Panel.allDots(0)
 	displayText = "KELEIGH SUCKS! "
 	columns_offset = 0
-	columns_at_a_time = 1
+	columns_at_a_time = 6
 	columns_each_character = 6
 	try:
 		print "Press Ctrl+C to Stop Test."
@@ -45,8 +45,12 @@ def multiPanel():
 			for panelNumber in range(len(FlipDot_Panels)):
 				message = displayText+displayText
 				columns_offset_total = columns_offset*columns_at_a_time
+				n=0
 				for FlipDot_Panel in FlipDot_Panels:
-					FlipDot_Panel.updateDisplay(message,columns_offset_total)
+					c=n*5
+					nMessage = message[n:c]
+					n=n+1
+					FlipDot_Panel.updateDisplay(message[:5],columns_offset_total)
 				#t = threading.Thread(target=worker, kwargs={'panelNumber':panelNumber,'panelDisplay':message,'columns_offset_total':columns_offset_total})
 				#logging.debug('starting %s', t.getName())
 				#t.start()
