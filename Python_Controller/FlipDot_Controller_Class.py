@@ -7,7 +7,6 @@ class FlipDot_Controller_Class:
 	columns_per_Segment = 6
 	displayColumns = 30
 	displayRows = 7
-	flipDelay = .01 #timing 
 
 	def __init__(self, name, onRows, offRows, onColumns, offColumns, numOfRegisterPins, ser_Pin, rclk_Pin, srclk_Pin):
 		self.name = name    # Name of the controller or panel
@@ -22,6 +21,7 @@ class FlipDot_Controller_Class:
 		self.initializePI()
 		self.registers= [0] * numOfRegisterPins
 		self.oldDisplayState = [[0 for s in range(self.displayRows)] for c in range(self.displayColumns)]
+		self.flipDelay = .001 #timing
 
 	def initializePI(self):
 		IO.setmode(IO.BCM)
