@@ -26,10 +26,10 @@ rclk_Pin = 27
 srclk_Pin = 22
 FlipDot_Panels[1] = FlipDot_Controller_Class.FlipDot_Controller_Class(1, onRows, offRows, onColumns, offColumns, numOfRegisterPins, ser_Pin, rclk_Pin, srclk_Pin) 
 #----Panel #3----#
-ser_Pin = 10
-rclk_Pin = 9
-srclk_Pin = 11
-FlipDot_Panels[2] = FlipDot_Controller_Class.FlipDot_Controller_Class(1, onRows, offRows, onColumns, offColumns, numOfRegisterPins, ser_Pin, rclk_Pin, srclk_Pin) 
+#ser_Pin = 10
+#rclk_Pin = 9
+#srclk_Pin = 11
+#FlipDot_Panels[2] = FlipDot_Controller_Class.FlipDot_Controller_Class(1, onRows, offRows, onColumns, offColumns, numOfRegisterPins, ser_Pin, rclk_Pin, srclk_Pin) 
 
 
 registers=[0]*numOfRegisterPins
