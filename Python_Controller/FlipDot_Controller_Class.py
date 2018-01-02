@@ -48,6 +48,8 @@ class FlipDot_Controller_Class:
 		self.writeRegisters()
 
 	def allDots(self, OnOff):
+		oldFlipDelay = self.flipDelay
+		self.flipDelay = .01
 		if(OnOff):
 			for column in range(self.displayColumns):
 				for row in range(self.displayRows):
@@ -65,7 +67,8 @@ class FlipDot_Controller_Class:
 					self.oldDisplayState[column][row]=0
 				self.writeRegisters()
 				sleep(self.flipDelay)
-				self.clearRegisters()			
+				self.clearRegisters()	
+		self.flipDelay = oldFlipDelay		
 	
 	def simpleTest(self, rowDot, columnDot):
 
