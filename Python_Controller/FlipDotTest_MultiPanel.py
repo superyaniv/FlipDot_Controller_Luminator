@@ -35,6 +35,7 @@ def multiPanel():
 	for FlipDot_Panel in FlipDot_Panels:
 		FlipDot_Panel.allDots(1)
 		FlipDot_Panel.allDots(0)
+		sleep(.01)
 	displayText = "KELEIGH SUCKS! "
 	columns_offset = 0
 	columns_at_a_time = 6
