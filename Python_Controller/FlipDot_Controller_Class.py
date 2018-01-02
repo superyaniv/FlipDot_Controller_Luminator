@@ -45,7 +45,7 @@ class FlipDot_Controller_Class:
 	def clearRegisters(self):
 		for i in range(0,self.numOfRegisterPins):
 			self.registers[i] = 0
-		sself.writeRegisters()
+		self.writeRegisters()
 
 	def allDots(self, OnOff):
 		oldFlipDelay = self.flipDelay
