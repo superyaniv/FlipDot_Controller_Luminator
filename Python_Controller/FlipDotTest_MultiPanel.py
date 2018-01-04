@@ -38,7 +38,7 @@ def multiPanel():
 		sleep(.01)
 	displayText = "KELEIGH SUCKS! "
 	columns_offset = 0
-	columns_at_a_time = 1
+	columns_at_a_time = 6
 	columns_each_character = 6
 	try:
 		print "Press Ctrl+C to Stop Test."
