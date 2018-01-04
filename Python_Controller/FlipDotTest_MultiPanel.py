@@ -80,4 +80,6 @@ def worker(panelNumber,panelDisplay,columns_offset_total):
 	return
 
 multiPanel()
-FlipDot_Controller.deInitialize()
+for FlipDot_Panel in FlipDot_Panels:
+	FlipDot_Panel.deInitialize
+	sleep(.01)
