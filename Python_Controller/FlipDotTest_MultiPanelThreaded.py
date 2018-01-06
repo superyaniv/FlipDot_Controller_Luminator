@@ -32,10 +32,18 @@ srclk_Pin = 13
 FlipDot_Panels[2] = FlipDot_Controller_Class.FlipDot_Controller_Class(1, onRows, offRows, onColumns, offColumns, numOfRegisterPins, ser_Pin, rclk_Pin, srclk_Pin) 
 
 def multiPanel():
+	#----Do Initial Clearing----#
 	for FlipDot_Panel in FlipDot_Panels:
-		FlipDot_Panel.allDots(1)
-		FlipDot_Panel.allDots(0)
-		sleep(.01)
+		t = threading.Thread(target=onOffer, kwargs={'panelNumber':n})
+		#FlipDot_Panel.allDots(1)
+		#FlipDot_Panel.allDots(0)
+	for t in threading.enumerate():
+		if t is main_thread:
+			continue
+		t.join()
+		logging.debug('joined %s', t.getName())
+
+	#----Start Scroller---#
 	displayText = "KELEIGH SUCKS! "
 	columns_offset = 0
 	columns_at_a_time = 6
@@ -49,7 +57,7 @@ def multiPanel():
 			for FlipDot_Panel in FlipDot_Panels:
 				c=n*5
 				nMessage = message[c:]
-				t = threading.Thread(target=worker, kwargs={'panelNumber':n,'panelDisplay':nMessage,'columns_offset_total':columns_offset_total})
+				t = threading.Thread(target=flipScroller, kwargs={'panelNumber':n,'panelDisplay':nMessage,'columns_offset_total':columns_offset_total})
 				n=n+1
 				logging.debug('starting %s', t.getName())
 				t.start()
@@ -70,9 +78,16 @@ def multiPanel():
 		#t.cancel()
 		pass
 
-def worker(panelNumber,panelDisplay,columns_offset_total):
+def flipScroller(panelNumber,panelDisplay,columns_offset_total):
 	logging.debug('Starting Panel #:'+str(panelNumber))
 	FlipDot_Panels[panelNumber].updateDisplay(panelDisplay,columns_offset_total)
+	logging.debug('Exiting Panel #:'+str(panelNumber))
+	return
+
+def onOffer(panelNumber):
+	logging.debug('Starting Panel #:'+str(panelNumber))
+	FlipDot_Panels[panelNumber].allDots(1)
+	FlipDot_Panels[panelNumber].allDots(0)
 	logging.debug('Exiting Panel #:'+str(panelNumber))
 	return
 
