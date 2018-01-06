@@ -33,8 +33,10 @@ FlipDot_Panels[2] = FlipDot_Controller_Class.FlipDot_Controller_Class(1, onRows,
 
 def multiPanel():
 	#----Do Initial Clearing----#
+	panelnum = 0
 	for FlipDot_Panel in FlipDot_Panels:
-		t = threading.Thread(target=onOffer, kwargs={'panelNumber':n})
+		t = threading.Thread(target=onOffer, kwargs={'panelNumber':panelnum})
+		panelnum = panelnum+1
 		#FlipDot_Panel.allDots(1)
 		#FlipDot_Panel.allDots(0)
 	for t in threading.enumerate():
@@ -53,12 +55,12 @@ def multiPanel():
 		while True:
 			message = displayText+displayText
 			columns_offset_total = columns_offset*columns_at_a_time
-			n=0
+			panelnum=0
 			for FlipDot_Panel in FlipDot_Panels:
-				c=n*5
+				c=panelnum*5
 				nMessage = message[c:]
-				t = threading.Thread(target=flipScroller, kwargs={'panelNumber':n,'panelDisplay':nMessage,'columns_offset_total':columns_offset_total})
-				n=n+1
+				t = threading.Thread(target=flipScroller, kwargs={'panelNumber':panelnum,'panelDisplay':nMessage,'columns_offset_total':columns_offset_total})
+				panelnum=panelnum+1
 				logging.debug('starting %s', t.getName())
 				t.start()
 			main_thread = threading.currentThread()
