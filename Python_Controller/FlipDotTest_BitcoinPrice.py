@@ -15,6 +15,8 @@ srclk_Pin = 24
 FlipDot_Controller = FlipDot_Controller_Class.FlipDot_Controller_Class(1, onRows, offRows, onColumns, offColumns, numOfRegisterPins, ser_Pin, rclk_Pin, srclk_Pin) 
 
 def getBitcoinPrice():
+    FlipDot_Controller.allDots(1)
+    FlipDot_Controller.allDots(0)
     URL = 'https://www.bitstamp.net/api/ticker/'
     try:
         r = requests.get(URL)

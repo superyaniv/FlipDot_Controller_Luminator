@@ -15,6 +15,7 @@ FlipDot_Controller = FlipDot_Controller_Class.FlipDot_Controller_Class(1, onRows
 registers=[0]*numOfRegisterPins
 
 def displayCounter():
+	FlipDot_Controller.allDots(1)
 	FlipDot_Controller.allDots(0)
 	t = 0
 	try:
