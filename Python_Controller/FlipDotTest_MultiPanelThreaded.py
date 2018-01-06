@@ -55,15 +55,15 @@ def multiPanel():
 			for FlipDot_Panel in FlipDot_Panels:
 				c=panelnum*5
 				nMessage = message[c:]
-				if panelnum = 0:
+				if panelnum == 0:
 					p = Process(target=flipScroller0, kwargs={'panelNumber':0,'panelDisplay':nMessage,'columns_offset_total':columns_offset_total})
 					proc.append(p)
 					p.start()
-				elif panelnum = 1:
+				elif panelnum == 1:
 					p = Process(target=flipScroller1, kwargs={'panelNumber':1,'panelDisplay':nMessage,'columns_offset_total':columns_offset_total})
 					proc.append(p)
 					p.start()
-				elif panelnum = 2:
+				elif panelnum == 2:
 					p = Process(target=flipScroller2, kwargs={'panelNumber':2,'panelDisplay':nMessage,'columns_offset_total':columns_offset_total})
 					proc.append(p)
 					p.start()
