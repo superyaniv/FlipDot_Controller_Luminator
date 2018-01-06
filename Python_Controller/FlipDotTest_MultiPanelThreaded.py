@@ -124,6 +124,8 @@ if __name__ == '__main__':
 			proc.append(p)
 			p.start()
 		panelnum=panelnum+1	
+	for p in proc:
+		p.join()
 	for FlipDot_Panel in FlipDot_Panels:
 		FlipDot_Panel.deInitialize
 		sleep(.01)
