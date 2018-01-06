@@ -75,13 +75,13 @@ class FlipDot_Controller_Class:
 		self.registers[self.onColumns[columnDot]]=1
 		self.registers[self.onRows[rowDot]]=1
 		self.writeRegisters()
-		sleep(.5)
+		sleep(.2)
 		self.clearRegisters()
 
 		self.registers[self.offColumns[columnDot]]=1
 		self.registers[self.offRows[rowDot]]=1
 		self.writeRegisters()
-		sleep(.5)
+		sleep(.2)
 		self.clearRegisters()		
 
 	def updateDisplay(self, textMessage, column_offset=0, row_offset=0):
