@@ -37,6 +37,8 @@ def multiPanel():
 	for FlipDot_Panel in FlipDot_Panels:
 		t = threading.Thread(target=onOffer, kwargs={'panelNumber':panelnum})
 		panelnum = panelnum+1
+		logging.debug('starting %s', t.getName())
+		t.start
 		#FlipDot_Panel.allDots(1)
 		#FlipDot_Panel.allDots(0)
 	for t in threading.enumerate():
