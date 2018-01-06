@@ -26,9 +26,9 @@ rclk_Pin = 27
 srclk_Pin = 22
 FlipDot_Panels[1] = FlipDot_Controller_Class.FlipDot_Controller_Class(1, onRows, offRows, onColumns, offColumns, numOfRegisterPins, ser_Pin, rclk_Pin, srclk_Pin) 
 #----Panel #3----#
-ser_Pin = 10
-rclk_Pin = 9
-srclk_Pin = 11
+ser_Pin = 5
+rclk_Pin = 6
+srclk_Pin = 13
 FlipDot_Panels[2] = FlipDot_Controller_Class.FlipDot_Controller_Class(1, onRows, offRows, onColumns, offColumns, numOfRegisterPins, ser_Pin, rclk_Pin, srclk_Pin) 
 
 def multiPanel():
@@ -44,15 +44,14 @@ def multiPanel():
 		print "Press Ctrl+C to Stop Test."
 		while True:
 			message = displayText+displayText
-			for panelNumber in range(len(FlipDot_Panels)):
-				columns_offset_total = columns_offset*columns_at_a_time
-				n=0
-				for FlipDot_Panel in FlipDot_Panels:
-					c=n*5
-					nMessage = message[c:]
-					#print nMessage
-					n=n+1
-					FlipDot_Panel.updateDisplay(nMessage,columns_offset_total)
+			columns_offset_total = columns_offset*columns_at_a_time
+			n=0
+			for FlipDot_Panel in FlipDot_Panels:
+				c=n*5
+				nMessage = message[c:]
+				#print nMessage
+				n=n+1
+				FlipDot_Panel.updateDisplay(nMessage,columns_offset_total)
 				#t = threading.Thread(target=worker, kwargs={'panelNumber':panelNumber,'panelDisplay':message,'columns_offset_total':columns_offset_total})
 				#logging.debug('starting %s', t.getName())
 				#t.start()
