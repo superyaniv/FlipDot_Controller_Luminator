@@ -31,24 +31,27 @@ rclk_Pin = 6
 srclk_Pin = 13
 FlipDot_Panels[2] = FlipDot_Controller_Class.FlipDot_Controller_Class(1, onRows, offRows, onColumns, offColumns, numOfRegisterPins, ser_Pin, rclk_Pin, srclk_Pin) 
 
-def Counter(scroll_speed):
+def multiPanel(scroll_text, character_offset, scroll_speed):
 	#----Do Initial Clearing----#
 	for FlipDot_Panel in FlipDot_Panels:
 		FlipDot_Panel.flipDelay = scroll_speed
 		FlipDot_Panel.allDots(1)
 		FlipDot_Panel.allDots(0)
 
-	#----Start Counter---#
+	#----Start Scroller---#
+	columns_offset = 0
+	columns_at_a_time = character_offset
+	columns_each_character = 6
 	try:
 		print "Press Ctrl+C to Stop Test."
 		while True:
+			message = scroll_text+" "+scroll_text
+			columns_offset_total = columns_offset*columns_at_a_time
 			panelnum=0
-			nCounter=0
 			for FlipDot_Panel in FlipDot_Panels:
 				c=panelnum*5
-				nMessage = str(nCounter)
+				nMessage = message[c:]
 				t = threading.Thread(target=flipScroller, kwargs={'panelNumber':panelnum,'panelDisplay':nMessage,'columns_offset_total':columns_offset_total})
-				nCounter = nCounter+1
 				panelnum=panelnum+1
 				logging.debug('starting %s', t.getName())
 				t.start()
@@ -82,9 +85,10 @@ def onOffer(panelNumber):
 	logging.debug('Exiting Panel #:'+str(panelNumber))
 	return
 
-
+scroll_text = raw_input("Scroll Text? ")
+character_offset = int(raw_input("Character Offset? "))
 scroll_speed = float(raw_input("Speed? "))
-Counter(scroll_speed)
+multiPanel(scroll_text, character_offset, scroll_speed)
 for FlipDot_Panel in FlipDot_Panels:
 	FlipDot_Panel.deInitialize
 	sleep(.01)
