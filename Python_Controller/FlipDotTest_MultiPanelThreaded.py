@@ -39,6 +39,7 @@ def multiPanel():
 		panelnum = panelnum+1
 		logging.debug('starting %s', t.getName())
 		t.start
+	main_thread = threading.currentThread()
 		#FlipDot_Panel.allDots(1)
 		#FlipDot_Panel.allDots(0)
 	for t in threading.enumerate():
