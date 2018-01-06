@@ -31,21 +31,21 @@ rclk_Pin = 6
 srclk_Pin = 13
 FlipDot_Panels[2] = FlipDot_Controller_Class.FlipDot_Controller_Class(1, onRows, offRows, onColumns, offColumns, numOfRegisterPins, ser_Pin, rclk_Pin, srclk_Pin) 
 
-def multiPanel():
+def multiPanel(scroll_text, character_offset, scroll_speed):
 	#----Do Initial Clearing----#
 	for FlipDot_Panel in FlipDot_Panels:
+		FlipDot_Panel.flipDelay = scroll_speed
 		FlipDot_Panel.allDots(1)
 		FlipDot_Panel.allDots(0)
 
 	#----Start Scroller---#
-	displayText = "KELEIGH SUCKS! "
 	columns_offset = 0
-	columns_at_a_time = 6
+	columns_at_a_time = character_offset
 	columns_each_character = 6
 	try:
 		print "Press Ctrl+C to Stop Test."
 		while True:
-			message = displayText+displayText
+			message = scroll_text+scroll_text
 			columns_offset_total = columns_offset*columns_at_a_time
 			panelnum=0
 			for FlipDot_Panel in FlipDot_Panels:
@@ -61,7 +61,7 @@ def multiPanel():
 					continue
 				t.join()
 				logging.debug('joined %s', t.getName())
-			if columns_offset>=(len(displayText)*columns_each_character)/columns_at_a_time:
+			if columns_offset>=(len(scroll_text)*columns_each_character)/columns_at_a_time:
 				columns_offset=1
 			else:
 				columns_offset=columns_offset+1
@@ -85,7 +85,10 @@ def onOffer(panelNumber):
 	logging.debug('Exiting Panel #:'+str(panelNumber))
 	return
 
-multiPanel()
+scroll_text = raw_input("Scroll Text?")
+character_offset = raw_input("Character Offset?")
+scroll_speed = raw_input("Speed?")
+multiPanel(scroll_text, character_offset, scroll_speed)
 for FlipDot_Panel in FlipDot_Panels:
 	FlipDot_Panel.deInitialize
 	sleep(.01)
