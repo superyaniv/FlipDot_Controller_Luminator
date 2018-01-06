@@ -55,7 +55,7 @@ def multiPanel(scroll_text,character_offset,scroll_speed):
 				panelnum=panelnum+1
 				FlipDot_Panel.updateDisplay(nMessage,columns_offset_total)
 
-			if columns_offset>=(len(displayText)*columns_each_character)/columns_at_a_time:
+			if columns_offset>=(len(scroll_text)*columns_each_character)/columns_at_a_time:
 				columns_offset=1
 			else:
 				columns_offset=columns_offset+1
