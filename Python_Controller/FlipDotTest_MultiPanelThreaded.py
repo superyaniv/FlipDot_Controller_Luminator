@@ -106,8 +106,24 @@ def onOffer(panelNumber):
 	logging.debug('Exiting Panel #:'+str(panelNumber))
 	return
 
-
-multiPanel()
-for FlipDot_Panel in FlipDot_Panels:
-	FlipDot_Panel.deInitialize
-	sleep(.01)
+if __name__ == '__main__':
+	#multiPanel()
+	for FlipDot_Panel in FlipDot_Panels:
+		c=panelnum*5
+		nMessage = message[c:]
+		if panelnum == 0:
+			p = Process(target=flipScroller0, kwargs={'panelNumber':0,'panelDisplay':'test0','columns_offset_total':0})
+			proc.append(p)
+			p.start()
+		elif panelnum == 1:
+			p = Process(target=flipScroller1, kwargs={'panelNumber':1,'panelDisplay':'test1','columns_offset_total':0})
+			proc.append(p)
+			p.start()
+		elif panelnum == 2:
+			p = Process(target=flipScroller2, kwargs={'panelNumber':2,'panelDisplay':'test2','columns_offset_total':0})
+			proc.append(p)
+			p.start()
+		panelnum=panelnum+1	
+	for FlipDot_Panel in FlipDot_Panels:
+		FlipDot_Panel.deInitialize
+		sleep(.01)
