@@ -19,7 +19,7 @@ def simpleTest():
 		print "Press Ctrl+C to Stop Test."
 		while True:
 			for x in range(7):
-				FlipDot_Controller.simpleTest(x, 18)
+				FlipDot_Controller.simpleTest(x, 20)
 				print x 
 	except KeyboardInterrupt:
 		FlipDot_Controller.deInitialize()
