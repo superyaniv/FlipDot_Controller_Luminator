@@ -47,7 +47,7 @@ def Counter(scroll_speed):
 			for FlipDot_Panel in FlipDot_Panels:
 				c=panelnum*5
 				nMessage = str(nCounter)
-				t = threading.Thread(target=flipScroller, kwargs={'panelNumber':panelnum,'panelDisplay':nMessage,'columns_offset_total':columns_offset_total})
+				t = threading.Thread(target=flipCounter, kwargs={'panelNumber':panelnum,'panelDisplay':nMessage})
 				nCounter = nCounter+1
 				panelnum=panelnum+1
 				logging.debug('starting %s', t.getName())
@@ -69,19 +69,11 @@ def Counter(scroll_speed):
 		t.cancel()
 		pass
 
-def flipScroller(panelNumber,panelDisplay,columns_offset_total):
+def flipCounter(panelNumber,panelDisplay):
 	logging.debug('Starting Panel #:'+str(panelNumber))
-	FlipDot_Panels[panelNumber].updateDisplay(panelDisplay,columns_offset_total)
+	FlipDot_Panels[panelNumber].updateDisplay(panelDisplay)
 	logging.debug('Exiting Panel #:'+str(panelNumber))
 	return
-
-def onOffer(panelNumber):
-	logging.debug('Starting Panel #:'+str(panelNumber))
-	FlipDot_Panels[panelNumber].allDots(1)
-	FlipDot_Panels[panelNumber].allDots(0)
-	logging.debug('Exiting Panel #:'+str(panelNumber))
-	return
-
 
 scroll_speed = float(raw_input("Speed? "))
 Counter(scroll_speed)
