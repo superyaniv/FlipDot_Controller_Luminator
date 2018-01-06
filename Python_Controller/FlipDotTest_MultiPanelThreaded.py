@@ -96,7 +96,8 @@ def onOffer(panelNumber):
 	logging.debug('Exiting Panel #:'+str(panelNumber))
 	return
 
-multiPanel()
-for FlipDot_Panel in FlipDot_Panels:
-	FlipDot_Panel.deInitialize
-	sleep(.01)
+if __name__ == "__main__":
+	multiPanel()
+	for FlipDot_Panel in FlipDot_Panels:
+		FlipDot_Panel.deInitialize
+		sleep(.01)
