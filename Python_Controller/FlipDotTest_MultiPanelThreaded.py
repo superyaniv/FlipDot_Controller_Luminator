@@ -80,7 +80,7 @@ def multiPanel():
 		for FlipDot_Panel in FlipDot_Panels:
 			FlipDot_Panel.deInitialize
 		logging.debug('cancelling %s', t.getName())
-		 t.cancel()
+		t.cancel()
 		pass
 
 def flipScroller(panelNumber,panelDisplay,columns_offset_total):
