@@ -58,10 +58,7 @@ def Counter(scroll_speed):
 					continue
 				t.join()
 				logging.debug('joined %s', t.getName())
-			if columns_offset>=(len(scroll_text)*columns_each_character)/columns_at_a_time:
-				columns_offset=1
-			else:
-				columns_offset=columns_offset+1
+
 	except KeyboardInterrupt:
 		for FlipDot_Panel in FlipDot_Panels:
 			FlipDot_Panel.deInitialize
