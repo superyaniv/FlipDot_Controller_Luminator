@@ -31,7 +31,7 @@ rclk_Pin = 6
 srclk_Pin = 13
 FlipDot_Panels[2] = FlipDot_Controller_Class.FlipDot_Controller_Class(1, onRows, offRows, onColumns, offColumns, numOfRegisterPins, ser_Pin, rclk_Pin, srclk_Pin) 
 
-def multiPanel(scroll_text,character_offset,scroll_text):
+def multiPanel(scroll_text,character_offset,scroll_speed):
 	#----Do Initial Clearing----#
 	for FlipDot_Panel in FlipDot_Panels:
 		FlipDot_Panel.flipDelay = scroll_speed
