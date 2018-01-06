@@ -45,32 +45,33 @@ def multiPanel():
 	columns_offset = 0
 	columns_at_a_time = 6
 	columns_each_character = 6
-	try:
-		print "Press Ctrl+C to Stop Test."
-		while True:
-			message = displayText+displayText
-			columns_offset_total = columns_offset*columns_at_a_time
-			panelnum=0
-			for FlipDot_Panel in FlipDot_Panels:
-				c=panelnum*5
-				nMessage = message[c:]
-				p[panelnum] = Process(target=flipScroller, kwargs={'panelNumber':panelnum,'panelDisplay':nMessage,'columns_offset_total':columns_offset_total})
-				p[panelnum].start()
-				panelnum=panelnum+1
+	if __name__ == '__main__':
+		try:
+			print "Press Ctrl+C to Stop Test."
+			while True:
+				message = displayText+displayText
+				columns_offset_total = columns_offset*columns_at_a_time
+				panelnum=0
+				for FlipDot_Panel in FlipDot_Panels:
+					c=panelnum*5
+					nMessage = message[c:]
+					p[panelnum] = Process(target=flipScroller, kwargs={'panelNumber':panelnum,'panelDisplay':nMessage,'columns_offset_total':columns_offset_total})
+					p[panelnum].start()
+					panelnum=panelnum+1
 
-			panelnum=0
-			for FlipDot_Panel in FlipDot_Panels:
-				p[panelnum].join()
-				panelnum=panelnum+1
+				panelnum=0
+				for FlipDot_Panel in FlipDot_Panels:
+					p[panelnum].join()
+					panelnum=panelnum+1
 
-			if columns_offset>=(len(displayText)*columns_each_character)/columns_at_a_time:
-				columns_offset=1
-			else:
-				columns_offset=columns_offset+1
-	except KeyboardInterrupt:
-		for FlipDot_Panel in FlipDot_Panels:
-			FlipDot_Panel.deInitialize
-		pass
+				if columns_offset>=(len(displayText)*columns_each_character)/columns_at_a_time:
+					columns_offset=1
+				else:
+					columns_offset=columns_offset+1
+		except KeyboardInterrupt:
+			for FlipDot_Panel in FlipDot_Panels:
+				FlipDot_Panel.deInitialize
+			pass
 
 def flipScroller(panelNumber,panelDisplay,columns_offset_total):
 	logging.debug('Starting Panel #:'+str(panelNumber))
