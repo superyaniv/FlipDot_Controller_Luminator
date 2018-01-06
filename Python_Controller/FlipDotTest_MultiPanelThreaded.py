@@ -51,12 +51,22 @@ def multiPanel():
 			message = displayText+displayText
 			columns_offset_total = columns_offset*columns_at_a_time
 			panelnum=0
+			
 			for FlipDot_Panel in FlipDot_Panels:
 				c=panelnum*5
 				nMessage = message[c:]
-				p = Process(target=flipScroller, kwargs={'panelNumber':panelnum,'panelDisplay':nMessage,'columns_offset_total':columns_offset_total})
-				proc.append(p)
-				p.start()
+				if panelnum = 0:
+					p = Process(target=flipScroller0, kwargs={'panelNumber':0,'panelDisplay':nMessage,'columns_offset_total':columns_offset_total})
+					proc.append(p)
+					p.start()
+				elif panelnum = 1:
+					p = Process(target=flipScroller1, kwargs={'panelNumber':1,'panelDisplay':nMessage,'columns_offset_total':columns_offset_total})
+					proc.append(p)
+					p.start()
+				elif panelnum = 2:
+					p = Process(target=flipScroller2, kwargs={'panelNumber':2,'panelDisplay':nMessage,'columns_offset_total':columns_offset_total})
+					proc.append(p)
+					p.start()
 				panelnum=panelnum+1
 
 			for p in proc:
@@ -71,7 +81,19 @@ def multiPanel():
 			FlipDot_Panel.deInitialize
 		pass
 
-def flipScroller(panelNumber,panelDisplay,columns_offset_total):
+def flipScroller0(panelNumber,panelDisplay,columns_offset_total):
+	logging.debug('Starting Panel #:'+str(panelNumber))
+	FlipDot_Panels[panelNumber].updateDisplay(panelDisplay,columns_offset_total)
+	logging.debug('Exiting Panel #:'+str(panelNumber))
+	return
+
+def flipScroller1(panelNumber,panelDisplay,columns_offset_total):
+	logging.debug('Starting Panel #:'+str(panelNumber))
+	FlipDot_Panels[panelNumber].updateDisplay(panelDisplay,columns_offset_total)
+	logging.debug('Exiting Panel #:'+str(panelNumber))
+	return
+
+def flipScroller2(panelNumber,panelDisplay,columns_offset_total):
 	logging.debug('Starting Panel #:'+str(panelNumber))
 	FlipDot_Panels[panelNumber].updateDisplay(panelDisplay,columns_offset_total)
 	logging.debug('Exiting Panel #:'+str(panelNumber))
