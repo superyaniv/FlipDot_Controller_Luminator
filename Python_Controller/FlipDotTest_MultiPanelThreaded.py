@@ -86,7 +86,7 @@ def onOffer(panelNumber):
 	return
 
 scroll_text = raw_input("Scroll Text?")
-character_offset = raw_input("Character Offset?")
+character_offset = int(raw_input("Character Offset?"))
 scroll_speed = raw_input("Speed?")
 multiPanel(scroll_text, character_offset, scroll_speed)
 for FlipDot_Panel in FlipDot_Panels:
