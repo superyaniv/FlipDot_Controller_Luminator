@@ -20,7 +20,7 @@ def simpleTest():
 		while True:
 			for c in range(18,22):
 				for r in range(7):
-					FlipDot_Controller.simpleTest(r, c)
+					FlipDot_Controller.simpleTest(r, 18)
 					print r
 					print c
 	except KeyboardInterrupt:
