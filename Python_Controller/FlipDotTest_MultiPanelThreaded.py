@@ -108,9 +108,9 @@ def onOffer(panelNumber):
 
 if __name__ == '__main__':
 	#multiPanel()
+	panelnum=0
 	for FlipDot_Panel in FlipDot_Panels:
 		c=panelnum*5
-		nMessage = message[c:]
 		if panelnum == 0:
 			p = Process(target=flipScroller0, kwargs={'panelNumber':0,'panelDisplay':'test0','columns_offset_total':0})
 			proc.append(p)
