@@ -41,14 +41,15 @@ def Counter(scroll_speed):
 	#----Start Counter---#
 	try:
 		print "Press Ctrl+C to Stop Test."
+		nCounter=0
 		while True:
+			
 			panelnum=0
-			nCounter=0
+			
 			for FlipDot_Panel in FlipDot_Panels:
 				c=panelnum*5
 				nMessage = str(nCounter)
 				t = threading.Thread(target=flipCounter, kwargs={'panelNumber':panelnum,'panelDisplay':nMessage})
-				nCounter = nCounter+1
 				panelnum=panelnum+1
 				logging.debug('starting %s', t.getName())
 				t.start()
@@ -58,6 +59,8 @@ def Counter(scroll_speed):
 					continue
 				t.join()
 				logging.debug('joined %s', t.getName())
+
+			nCounter = nCounter+1
 
 	except KeyboardInterrupt:
 		for FlipDot_Panel in FlipDot_Panels:
