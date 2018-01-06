@@ -9,7 +9,7 @@ offColumns = [10,12,13,14,15,8,1,2,3,9,18,17,24,31,30,29,28,27,26,25,4,5,6,7,0,3
 numOfRegisterPins = 10 * 8 
 ser_Pin = 5
 rclk_Pin = 6
-srclk_Pin = 13
+srclk_Pin = 13 #test
 
 FlipDot_Controller = FlipDot_Controller_Class.FlipDot_Controller_Class(1, onRows, offRows, onColumns, offColumns, numOfRegisterPins, ser_Pin, rclk_Pin, srclk_Pin) 
 
