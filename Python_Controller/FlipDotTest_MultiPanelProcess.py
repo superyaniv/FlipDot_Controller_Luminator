@@ -61,7 +61,7 @@ def multiPanel(scroll_text, character_offset, scroll_speed):
 				columns_offset_total = columns_offset*columns_at_a_time
 				panelnum=0
 				procs=[]
-				p = Pool(3)
+				p = multiprocessing.Pool(3)
 				p.map(flipScroller, FlipDot_Panels)
 				#p = multiprocessing.Process(target=flipScroller,args=(FlipDot_Panels,message,columns_offset_total))
 				#p.start()
