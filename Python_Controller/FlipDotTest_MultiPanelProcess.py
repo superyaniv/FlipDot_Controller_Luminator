@@ -70,7 +70,7 @@ def flipScroller(Panels,message,columns_offset_total):
 	for panel in panels:
 		c=panelnum*5
 		nMessage = message[c:]
-		FlipDot_Panels[panelNumber].updateDisplay(nMessage,columns_offset_total)
+		panel.updateDisplay(nMessage,columns_offset_total)
 		panelnum = panelnum+1
 	return
 
