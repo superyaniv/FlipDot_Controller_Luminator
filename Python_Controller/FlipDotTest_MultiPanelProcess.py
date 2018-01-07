@@ -57,12 +57,14 @@ def multiPanel(scroll_text, character_offset, scroll_speed):
 					procs.append(p)
 					panelnum=panelnum+1
 					logging.debug('starting %s', p.name)
+				main_process = multiprocessing.current_process()
 				for p in procs:
+					if p is main_process:
+						continue
 					p.start()
-				#main_process = multiprocessing.current_process()
 				for p in procs:
-					#if p is main_process:
-					#	continue
+					if p is main_process:
+						continue
 					p.join()
 					logging.debug('joined %s', p.name)
 				if columns_offset>=(len(scroll_text)*columns_each_character)/columns_at_a_time:
