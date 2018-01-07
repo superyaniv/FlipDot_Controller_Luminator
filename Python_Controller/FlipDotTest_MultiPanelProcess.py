@@ -62,7 +62,8 @@ def multiPanel(scroll_text, character_offset, scroll_speed):
 				panelnum=0
 				procs=[]
 				p = multiprocessing.Pool(3)
-				p.map(flipScroller, FlipDot_Panels)
+				panelnums = [0 for i in range(3)]
+				p.map(flipScroller, [0,1,2])
 				#p = multiprocessing.Process(target=flipScroller,args=(FlipDot_Panels,message,columns_offset_total))
 				#p.start()
 				#p.join()
@@ -78,15 +79,13 @@ def multiPanel(scroll_text, character_offset, scroll_speed):
 			p.terminate()
 		pass
 
-def flipScroller(panels):
-	panelnum=0
-	for panel in panels:
+def flipScroller(panelnums):
+	for panel in panelnums:
 		logging.debug('Starting Panel #:'+str(panelnum))
-		c=panelnum*5
+		c=panel*5
 		nMessage = message[c:]
 		columns_offset_total = columns_offset*columns_at_a_time
-		panel.updateDisplay(nMessage,columns_offset_total)
-		panelnum = panelnum+1
+		FlipDot_Panels[panel].updateDisplay(nMessage,columns_offset_total)
 		logging.debug('Exiting Panel #:'+str(panelnum))
 	return
 
