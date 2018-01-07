@@ -106,7 +106,7 @@ scroll_speed = float(raw_input("Speed? "))
 if __name__ == '__main__':
 	panelnums = [0 for i in range(3)]
 	p = multiprocessing.Pool(3)
-	p.map(flipScroller, panelnums)
+	p.map(flipScroller, range(3))
 #multiPanel(scroll_text, character_offset, scroll_speed)
 for FlipDot_Panel in FlipDot_Panels:
 	FlipDot_Panel.deInitialize
