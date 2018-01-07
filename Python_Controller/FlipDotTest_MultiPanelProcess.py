@@ -67,14 +67,13 @@ def multiPanel(scroll_text, character_offset, scroll_speed):
 
 def flipScroller(panels,message,columns_offset_total):
 	panelnum=0
-	logging.debug('Starting Panel #:'+str(panelNumber))
 	for panel in panels:
-		logging.debug('Starting Panel #:'+str(panelNumber))
+		logging.debug('Starting Panel #:'+str(panelnum))
 		c=panelnum*5
 		nMessage = message[c:]
 		panel.updateDisplay(nMessage,columns_offset_total)
 		panelnum = panelnum+1
-		logging.debug('Exiting Panel #:'+str(panelNumber))
+		logging.debug('Exiting Panel #:'+str(panelnum))
 	return
 
 def onOffer(panelNumber):
