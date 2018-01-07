@@ -105,9 +105,12 @@ if __name__ == '__main__':
 		FlipDot_Panel.allDots(1)
 		FlipDot_Panel.allDots(0)
 	panelnums = multiprocessing.Array('i', range(3))
-	p = multiprocessing.Process(target=flipScroller,args=(panelnums,message))
-	p.start()
-	p.join()
+	for n in range(5):
+		character_offset = character_offset+1
+		message = message[character_offset:]
+		p = multiprocessing.Process(target=flipScroller,args=(panelnums,message))
+		p.start()
+		p.join()
 	#multiPanel(message, character_offset, scroll_speed)
 	for FlipDot_Panel in FlipDot_Panels:
 		FlipDot_Panel.deInitialize
