@@ -57,6 +57,7 @@ def multiPanel(scroll_text, character_offset, scroll_speed):
 					procs.append(p)
 					panelnum=panelnum+1
 					logging.debug('starting %s', p.name)
+				for p in procs:
 					p.start()
 				#main_process = multiprocessing.current_process()
 				for p in procs:
