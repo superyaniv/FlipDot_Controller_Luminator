@@ -31,7 +31,18 @@ rclk_Pin = 6
 srclk_Pin = 13
 FlipDot_Panels[2] = FlipDot_Controller_Class.FlipDot_Controller_Class(1, onRows, offRows, onColumns, offColumns, numOfRegisterPins, ser_Pin, rclk_Pin, srclk_Pin) 
 
+columns_offset = 0
+columns_at_a_time = 0
+columns_each_character = 6
+message = ''
+
 def multiPanel(scroll_text, character_offset, scroll_speed):
+	global columns_offset
+	global columns_at_a_time
+	global columns_each_character
+	global message 
+	message = scroll_text
+
 	#----Do Initial Clearing----#
 	for FlipDot_Panel in FlipDot_Panels:
 		FlipDot_Panel.flipDelay = scroll_speed
@@ -50,9 +61,11 @@ def multiPanel(scroll_text, character_offset, scroll_speed):
 				columns_offset_total = columns_offset*columns_at_a_time
 				panelnum=0
 				procs=[]
-				p = multiprocessing.Process(target=flipScroller,args=(FlipDot_Panels,message,columns_offset_total))
-				p.start()
-				p.join(10)
+				p = Pool(3)
+				p.map(flipScroller, FlipDot_Panels)
+				#p = multiprocessing.Process(target=flipScroller,args=(FlipDot_Panels,message,columns_offset_total))
+				#p.start()
+				#p.join()
 				if columns_offset>=(len(scroll_text)*columns_each_character)/columns_at_a_time:
 					columns_offset=1
 				else:
@@ -65,12 +78,13 @@ def multiPanel(scroll_text, character_offset, scroll_speed):
 			p.terminate()
 		pass
 
-def flipScroller(panels,message,columns_offset_total):
+def flipScroller(panels):
 	panelnum=0
 	for panel in panels:
 		logging.debug('Starting Panel #:'+str(panelnum))
 		c=panelnum*5
 		nMessage = message[c:]
+		columns_offset_total = columns_offset*columns_at_a_time
 		panel.updateDisplay(nMessage,columns_offset_total)
 		panelnum = panelnum+1
 		logging.debug('Exiting Panel #:'+str(panelnum))
