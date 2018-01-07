@@ -1,6 +1,6 @@
 import FlipDot_Controller_Class
 from time import sleep
-from multiprocessing import Process
+import multiprocessing
 import logging
 
 logging.basicConfig(level=logging.DEBUG,
