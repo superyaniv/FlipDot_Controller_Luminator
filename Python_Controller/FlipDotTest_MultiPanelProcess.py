@@ -67,7 +67,7 @@ def multiPanel(scroll_text, character_offset, scroll_speed):
 				pool.map(flipScroller, panelnums)
 				res = pool.apply_async(os.getpid, ())
 				print res
-				#pool.join()
+				pool.join(10)
 				#p = multiprocessing.Process(target=flipScroller,args=(FlipDot_Panels,message,columns_offset_total))
 				#p.start()
 				#p.join()
