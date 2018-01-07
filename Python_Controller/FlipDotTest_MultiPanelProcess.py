@@ -63,7 +63,7 @@ def multiPanel(scroll_text, character_offset, scroll_speed):
 				panelnum=0
 				procs=[]
 				pool = multiprocessing.Pool(3)
-				panelnums =Array('i', range(3))
+				panelnums = multiprocessing.Array('i', range(3))
 				p = multiprocessing.Process(target=flipScroller,args=(panelnums,))
 				p.start()
 				p.join()
