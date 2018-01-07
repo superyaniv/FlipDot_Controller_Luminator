@@ -55,7 +55,8 @@ def multiPanel(scroll_text, character_offset, scroll_speed):
 					nMessage = message[c:]
 					columns_offset_totals = [columns_offset_total]*3
 					messages = [message]*3
-					p = multiprocessing.Pool(target=flipScroller, kwargs={'panels':FlipDot_Panels,'panelnumbers':[0,1,2],'message':messages,'columns_offset_total':columns_offset_totals},name=panelnum)
+					panelnumbers = range(3)
+					p = multiprocessing.Pool.starmap(flipScroller, product(FlipDot_Panels,panelnumbers,messages,columns_offset_totals))
 					proc.append(p)
 					panelnum=panelnum+1
 					logging.debug('starting %s', p.name)
