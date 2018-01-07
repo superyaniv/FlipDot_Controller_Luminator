@@ -53,7 +53,7 @@ def multiPanel(scroll_text, character_offset, scroll_speed):
 				for FlipDot_Panel in FlipDot_Panels:
 					c=panelnum*5
 					nMessage = message[c:]
-					p = multiprocessing.Process(target=flipScroller, kwargs={'panelNumber':panelnum,'panelDisplay':nMessage,'columns_offset_total':columns_offset_total},name=panelnum)
+					p = multiprocessing.Process(target=flipScroller, args=(panelnum,nMessage,:columns_offset_total),name=panelnum)
 					procs.append(p)
 					panelnum=panelnum+1
 					logging.debug('starting %s', p.name)
