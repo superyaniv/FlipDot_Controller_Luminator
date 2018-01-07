@@ -78,11 +78,7 @@ def multiPanel(scroll_text, character_offset, scroll_speed):
 			p.terminate()
 		pass
 
-def flipScroller(panelnums):
-	global columns_offset
-	global columns_at_a_time
-	global columns_each_character
-	global message 
+def flipScroller(panelnums, message):
 	for i in range(len(panelnums)):
 		logging.debug('Starting Panel #:'+str(i))
 		c=i*5
@@ -104,7 +100,7 @@ if __name__ == '__main__':
 	character_offset = int(raw_input("Character Offset? "))
 	scroll_speed = float(raw_input("Speed? "))
 	panelnums = multiprocessing.Array('i', range(3))
-	p = multiprocessing.Process(target=flipScroller,args=(panelnums,))
+	p = multiprocessing.Process(target=flipScroller,args=(panelnums,message))
 	p.start()
 	p.join()
 	#multiPanel(message, character_offset, scroll_speed)
