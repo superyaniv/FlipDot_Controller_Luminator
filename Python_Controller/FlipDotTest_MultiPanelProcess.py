@@ -4,7 +4,7 @@ import multiprocessing
 import logging
 
 logging.basicConfig(level=logging.DEBUG,
-                    format='(%(threadName)-10s) %(message)s',
+                    format='(%(processName)-10s) %(message)s',
                     )
 
 #----Set up controller to understand PCB design and Microcontroller layout----#
@@ -45,28 +45,29 @@ def multiPanel(scroll_text, character_offset, scroll_speed):
 	try:
 		print "Press Ctrl+C to Stop Test."
 		while True:
-			message = scroll_text+" "+scroll_text
-			columns_offset_total = columns_offset*columns_at_a_time
-			panelnum=0
-			proc=[]
-			for FlipDot_Panel in FlipDot_Panels:
-				c=panelnum*5
-				nMessage = message[c:]
-				p = multiprocessing.Process(target=flipScroller, kwargs={'panelNumber':panelnum,'panelDisplay':nMessage,'columns_offset_total':columns_offset_total},name=panelnum)
-				proc.append(p)
-				panelnum=panelnum+1
-				logging.debug('starting %s', p.name)
-				p.start()
-			main_process = multiprocessing.current_process()
-			for p in proc:
-				if p is main_process:
-					continue
-				p.join()
-				logging.debug('joined %s', p.name)
-			if columns_offset>=(len(scroll_text)*columns_each_character)/columns_at_a_time:
-				columns_offset=1
-			else:
-				columns_offset=columns_offset+1
+			if __name__ == '__main__':
+				message = scroll_text+" "+scroll_text
+				columns_offset_total = columns_offset*columns_at_a_time
+				panelnum=0
+				proc=[]
+				for FlipDot_Panel in FlipDot_Panels:
+					c=panelnum*5
+					nMessage = message[c:]
+					p = multiprocessing.Process(target=flipScroller, kwargs={'panelNumber':panelnum,'panelDisplay':nMessage,'columns_offset_total':columns_offset_total},name=panelnum)
+					proc.append(p)
+					panelnum=panelnum+1
+					logging.debug('starting %s', p.name)
+					p.start()
+				main_process = multiprocessing.current_process()
+				for p in proc:
+					#if p is main_process:
+					#	continue
+					p.join()
+					logging.debug('joined %s', p.name)
+				if columns_offset>=(len(scroll_text)*columns_each_character)/columns_at_a_time:
+					columns_offset=1
+				else:
+					columns_offset=columns_offset+1
 	except KeyboardInterrupt:
 		for FlipDot_Panel in FlipDot_Panels:
 			FlipDot_Panel.deInitialize
