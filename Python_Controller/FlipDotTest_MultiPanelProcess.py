@@ -66,7 +66,7 @@ def multiPanel(scroll_text, character_offset, scroll_speed):
 				panelnums = multiprocessing.Array('i', range(3))
 				p = multiprocessing.Process(target=flipScroller,args=(panelnums,))
 				p.start()
-				p.join()
+				p.join(10)
 				if columns_offset>=(len(scroll_text)*columns_each_character)/columns_at_a_time:
 					columns_offset=1
 				else:
