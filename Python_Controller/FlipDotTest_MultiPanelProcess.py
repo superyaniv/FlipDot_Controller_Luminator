@@ -43,9 +43,9 @@ def multiPanel(scroll_text, character_offset, scroll_speed):
 	columns_at_a_time = character_offset
 	columns_each_character = 6
 	try:
-		if __name__ == '__main__':
-			print "Press Ctrl+C to Stop Test."
-			while True:
+		print "Press Ctrl+C to Stop Test."
+		while True:
+			if __name__ == '__main__':
 				message = scroll_text+" "+scroll_text
 				columns_offset_total = columns_offset*columns_at_a_time
 				panelnum=0
@@ -72,7 +72,7 @@ def multiPanel(scroll_text, character_offset, scroll_speed):
 		for FlipDot_Panel in FlipDot_Panels:
 			FlipDot_Panel.deInitialize
 		logging.debug('cancelling %s', p.name)
-		for p in proc:
+		for p in procs:
 			p.terminate()
 		pass
 
