@@ -45,33 +45,29 @@ def multiPanel(scroll_text, character_offset, scroll_speed):
 	try:
 		print "Press Ctrl+C to Stop Test."
 		while True:
-			if __name__ == '__main__':
-				message = scroll_text+" "+scroll_text
-				columns_offset_total = columns_offset*columns_at_a_time
-				panelnum=0
-				proc=[]
-				for FlipDot_Panel in FlipDot_Panels:
-					c=panelnum*5
-					nMessage = message[c:]
-					columns_offset_totals = [columns_offset_total]*3
-					messages = [message]*3
-					panelnumbers = range(3)
-					with multiprocessing.Pool(processes=3) as pool:
-						p = pool.starmap(flipScroller, product(FlipDot_Panels,panelnumbers,messages,columns_offset_totals))
-					proc.append(p)
-					panelnum=panelnum+1
-					logging.debug('starting %s', p.name)
-					p.start()
-				main_process = multiprocessing.current_process()
-				for p in proc:
-					#if p is main_process:
-					#	continue
-					p.join()
-					logging.debug('joined %s', p.name)
-				if columns_offset>=(len(scroll_text)*columns_each_character)/columns_at_a_time:
-					columns_offset=1
-				else:
-					columns_offset=columns_offset+1
+			message = scroll_text+" "+scroll_text
+			columns_offset_total = columns_offset*columns_at_a_time
+			panelnum=0
+			proc=[]
+			for FlipDot_Panel in FlipDot_Panels:
+				c=panelnum*5
+				nMessage = message[c:]
+				p = multiprocessing.Process(target=flipScroller, kwargs={'panelNumber':panelnum,'panelDisplay':nMessage,'columns_offset_total':columns_offset_total},name=panelnum)
+				proc.append(p)
+				panelnum=panelnum+1
+				logging.debug('starting %s', p.name)
+				p.start()
+			main_process = multiprocessing.current_process()
+			p.join()
+			for p in proc:
+				#if p is main_process:
+				#	continue
+				p.join()
+				logging.debug('joined %s', p.name)
+			if columns_offset>=(len(scroll_text)*columns_each_character)/columns_at_a_time:
+				columns_offset=1
+			else:
+				columns_offset=columns_offset+1
 	except KeyboardInterrupt:
 		for FlipDot_Panel in FlipDot_Panels:
 			FlipDot_Panel.deInitialize
@@ -80,11 +76,9 @@ def multiPanel(scroll_text, character_offset, scroll_speed):
 			p.terminate()
 		pass
 
-def flipScroller(panels,panelnumbers,message,columns_offset_total):
+def flipScroller(panelNumber,panelDisplay,columns_offset_total):
 	logging.debug('Starting Panel #:'+str(panelNumber))
-	c=panelnumbers*5
-	nMessage = message[c:]
-	FlipDot_Panels[panelNumber].updateDisplay(nMessage,columns_offset_total)
+	FlipDot_Panels[panelNumber].updateDisplay(panelDisplay,columns_offset_total)
 	logging.debug('Exiting Panel #:'+str(panelNumber))
 	return
 
