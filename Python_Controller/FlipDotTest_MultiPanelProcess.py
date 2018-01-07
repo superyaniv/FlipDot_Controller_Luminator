@@ -55,14 +55,14 @@ def multiPanel(scroll_text, character_offset, scroll_speed):
 				p = multiprocessing.Process(target=flipScroller, kwargs={'panelNumber':panelnum,'panelDisplay':nMessage,'columns_offset_total':columns_offset_total},name=panelnum)
 				proc.append(p)
 				panelnum=panelnum+1
-				logging.debug('starting %s', p.name())
+				logging.debug('starting %s', p.name)
 				p.start()
 			main_process = multiprocessing.current_process()
 			for p in proc:
 				if p is main_process:
 					continue
 				p.join()
-				logging.debug('joined %s', p.name())
+				logging.debug('joined %s', p.name)
 			if columns_offset>=(len(scroll_text)*columns_each_character)/columns_at_a_time:
 				columns_offset=1
 			else:
@@ -70,7 +70,7 @@ def multiPanel(scroll_text, character_offset, scroll_speed):
 	except KeyboardInterrupt:
 		for FlipDot_Panel in FlipDot_Panels:
 			FlipDot_Panel.deInitialize
-		logging.debug('cancelling %s', p.name())
+		logging.debug('cancelling %s', p.name)
 		for p in proc:
 			p.terminate()
 		pass
