@@ -100,8 +100,38 @@ if __name__ == '__main__':
 	character_offset = int(raw_input("Character Offset? "))
 	scroll_speed = float(raw_input("Speed? "))
 
-	multiPanel(scroll_text, character_offset, scroll_speed)
-	
+	global columns_offset
+	global columns_at_a_time
+	global columns_each_character
+	global message 
+	message = scroll_text
+
+	#----Do Initial Clearing----#
+	for FlipDot_Panel in FlipDot_Panels:
+		FlipDot_Panel.flipDelay = scroll_speed
+		FlipDot_Panel.allDots(1)
+		FlipDot_Panel.allDots(0)
+
+	#----Start Scroller---#
+	columns_offset = 0
+	columns_at_a_time = character_offset
+	columns_each_character = 6
+	print "Press Ctrl+C to Stop Test."
+	message = scroll_text+" "+scroll_text
+	columns_offset_total = columns_offset*columns_at_a_time
+	panelnum=0
+	procs=[]
+	p = multiprocessing.Pool(processes=3)
+	panelnums = [0 for i in range(3)]
+	p.map(flipScroller, panelnums)
+	#p = multiprocessing.Process(target=flipScroller,args=(FlipDot_Panels,message,columns_offset_total))
+	#p.start()
+	#p.join()
+	if columns_offset>=(len(scroll_text)*columns_each_character)/columns_at_a_time:
+		columns_offset=1
+	else:
+		columns_offset=columns_offset+1
+
 	for FlipDot_Panel in FlipDot_Panels:
 		FlipDot_Panel.deInitialize
 		sleep(.01)
