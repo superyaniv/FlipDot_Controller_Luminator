@@ -99,6 +99,11 @@ if __name__ == '__main__':
 	message = raw_input("Scroll Text? ")
 	character_offset = int(raw_input("Character Offset? "))
 	scroll_speed = float(raw_input("Speed? "))
+		#----Do Initial Clearing----#
+	for FlipDot_Panel in FlipDot_Panels:
+		FlipDot_Panel.flipDelay = scroll_speed
+		FlipDot_Panel.allDots(1)
+		FlipDot_Panel.allDots(0)
 	panelnums = multiprocessing.Array('i', range(3))
 	p = multiprocessing.Process(target=flipScroller,args=(panelnums,message))
 	p.start()
