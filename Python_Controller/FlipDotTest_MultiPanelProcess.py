@@ -2,7 +2,6 @@ import FlipDot_Controller_Class
 from time import sleep
 import multiprocessing
 import logging
-from functools import partial
 
 logging.basicConfig(level=logging.DEBUG,
                     format='(%(processName)-10s) %(message)s',
@@ -64,10 +63,7 @@ def multiPanel(scroll_text, character_offset, scroll_speed):
 				procs=[]
 				p = multiprocessing.Pool(3)
 				panelnums = [0 for i in range(3)]
-				arg1=0
-				arg2=0
-				func = partial(flipScroller, arg1, arg2)
-				p.map(func, panelnums)
+				p.map(flipScroller, panelnums)
 				#p = multiprocessing.Process(target=flipScroller,args=(FlipDot_Panels,message,columns_offset_total))
 				#p.start()
 				#p.join()
@@ -83,14 +79,13 @@ def multiPanel(scroll_text, character_offset, scroll_speed):
 			p.terminate()
 		pass
 
-def flipScroller(panelnums):
-	for panel in range(panelnums):
-		logging.debug('Starting Panel #:'+str(panelnum))
-		c=panel*5
-		nMessage = message[c:]
-		columns_offset_total = columns_offset*columns_at_a_time
-		FlipDot_Panels[panel].updateDisplay(nMessage,columns_offset_total)
-		logging.debug('Exiting Panel #:'+str(panelnum))
+def flipScroller(panelnum_n):
+	logging.debug('Starting Panel #:'+str(panelnum_n))
+	c=panelnum_n*5
+	nMessage = message[c:]
+	columns_offset_total = columns_offset*columns_at_a_time
+	FlipDot_Panels[panelnum_n].updateDisplay(nMessage,columns_offset_total)
+	logging.debug('Exiting Panel #:'+str(panelnum_n))
 	return
 
 def onOffer(panelNumber):
@@ -103,11 +98,7 @@ def onOffer(panelNumber):
 scroll_text = raw_input("Scroll Text? ")
 character_offset = int(raw_input("Character Offset? "))
 scroll_speed = float(raw_input("Speed? "))
-if __name__ == '__main__':
-	panelnums = [0 for i in range(3)]
-	p = multiprocessing.Pool(3)
-	p.map(flipScroller, range(3))
-#multiPanel(scroll_text, character_offset, scroll_speed)
+multiPanel(scroll_text, character_offset, scroll_speed)
 for FlipDot_Panel in FlipDot_Panels:
 	FlipDot_Panel.deInitialize
 	sleep(.01)
