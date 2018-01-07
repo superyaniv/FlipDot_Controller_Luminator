@@ -63,6 +63,8 @@ def multiPanel(scroll_text, character_offset, scroll_speed):
 					#if p is main_process:
 					#	continue
 					p.join(50)
+					if p.isalive():
+						p.terminate()
 					logging.debug('joined %s', p.name)
 				if columns_offset>=(len(scroll_text)*columns_each_character)/columns_at_a_time:
 					columns_offset=1
