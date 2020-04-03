@@ -76,7 +76,7 @@ Add additional notes about how to deploy this on a live system
 
 ## Authors
 
-Yaniv Joseph Alfasy (http://yanivalfasy.com)
+Yaniv Joseph Alfasy (https://yanivalfasy.com)
 
 Please contact me if you have any additional questions.
 
