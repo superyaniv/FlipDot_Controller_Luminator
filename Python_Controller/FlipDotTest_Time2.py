@@ -22,7 +22,9 @@ def onOffTest():
     try:
         for x in range(100):
             FlipDot_Controller.allDots(1)
+            time.sleep(.02)
             FlipDot_Controller.allDots(0)
+            time.sleep(.02)
     except KeyboardInterrupt:
         FlipDot_Controller.deInitialize
         pass
@@ -39,14 +41,14 @@ def displayTime():
             datetime.datetime.now().time()
             #if t != datetime.datetime.now().strftime("%I:%M"):
             #    t = datetime.datetime.now().strftime("%I:%M")
-            time.sleep(.02)
+            time.sleep(.01)
             FlipDot_Controller.updateDisplay(str(c))
     except KeyboardInterrupt:
         FlipDot_Controller.deInitialize
         pass
 
-displayTime()
-#onOffTest()
+#displayTime()
+onOffTest()
 FlipDot_Controller.deInitialize()
 
 
