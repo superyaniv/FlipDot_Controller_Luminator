@@ -4,6 +4,8 @@ import time
 
 #----Set up controller to understand PCB design and Microcontroller layout----#
 
+#!use the class
+
 offRows=[5,7,3,2,1,4,6]
 onRows=[44,47,42,40,46,41,43]#69#27
 offColumns = [74,48,73,49,50, 72,71,51,70,52, 53,69,54,68,55, 67,56,66,57,58, 59,65,60,64,61]
@@ -22,9 +24,9 @@ def onOffTest():
     try:
         for x in range(100):
             FlipDot_Controller.allDots(1)
-            time.sleep(.02)
+            #time.sleep(.02)
             FlipDot_Controller.allDots(0)
-            time.sleep(.02)
+            #time.sleep(.02)
     except KeyboardInterrupt:
         FlipDot_Controller.deInitialize
         pass
@@ -41,14 +43,14 @@ def displayTime():
             datetime.datetime.now().time()
             #if t != datetime.datetime.now().strftime("%I:%M"):
             #    t = datetime.datetime.now().strftime("%I:%M")
-            time.sleep(.01)
+            #time.sleep(.1) #can go as low as .01 - but check power rain
             FlipDot_Controller.updateDisplay(str(c))
     except KeyboardInterrupt:
         FlipDot_Controller.deInitialize
         pass
 
-#displayTime()
-onOffTest()
+displayTime()
+#onOffTest()
 FlipDot_Controller.deInitialize()
 
 
