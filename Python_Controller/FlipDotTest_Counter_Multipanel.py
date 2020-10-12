@@ -1,4 +1,4 @@
-import FlipDot_Controller_Class
+import FlipDot_Controller_Class2 as FlipDot_Controller_Class
 from time import sleep
 import threading
 import logging
